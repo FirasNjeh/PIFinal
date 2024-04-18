@@ -1,0 +1,37 @@
+package esprit.pi.demo.entities.Firas;
+
+import esprit.pi.demo.entities.Enumeration.StatusPF;
+import esprit.pi.demo.entities.Nermine.TransactionCredit;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Entity
+public class Portefeuille implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private float montant;
+    private LocalDate date_creation=LocalDate.now();
+    private int rib;
+    @Enumerated(EnumType.STRING)
+    private StatusPF statuspf=StatusPF.ACTIVE;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "portefeuilleTransaction")
+    private List<TransactionCredit> transactions;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "portefeuilleCreditCard")
+    private List <CreditCard> creditCards;
+    @ToString.Exclude
+    @OneToOne(mappedBy = "portefeuilleUser")
+    private User user;
+
+}
