@@ -15,6 +15,7 @@ import java.util.Base64;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @AllArgsConstructor
 @RequestMapping("/user/Credit")
 

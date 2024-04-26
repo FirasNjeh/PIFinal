@@ -1,0 +1,44 @@
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Nos packs Crédit</h5>
+  
+                <!-- Table with stripped rows -->
+                <table class="table datatable" *ngIf="(pack$ | async) as packs">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>Nom</th>
+                      <th>Description</th>
+                      <th>Montant Min</th>
+                      <th>Montant Max</th>
+                      <th>Pack Crédit</th>
+                      <th>image</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let p of packs">
+                      <td>{{ p.id }}</td>
+                      <td>{{ p.nom }}</td>
+                      <td>{{ p.description }}</td>
+                      <td>{{ p.montantMin }}</td>
+                      <td>{{ p.montantMax }}</td>
+                      <td>{{ p.packCredit }}</td>
+                      <td>{{p.image}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+</main>

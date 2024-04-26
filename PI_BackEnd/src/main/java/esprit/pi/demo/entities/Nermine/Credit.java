@@ -27,7 +27,7 @@ public class Credit implements Serializable {
     private Date datepp;
     private float paiementMensuel;
     private float amortissement;
-    private float annuité;
+    private float annuite;
     private int lateTimes;
     @Enumerated(EnumType.STRING)
     private CreditHistory creditHistory;
