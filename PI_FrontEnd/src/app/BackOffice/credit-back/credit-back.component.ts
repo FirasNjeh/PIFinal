@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Credit } from 'src/app/model/Credit';
-import { CreditFrontService } from '../service/credit-front.service';
+import { CreditBackService } from '../service/credit-back.service';
 
 @Component({
   selector: 'app-credit-back',
@@ -14,7 +14,7 @@ export class CreditBackComponent {
 
   errorMessage: Object | undefined;
   
-  constructor(private creditService: CreditFrontService){}
+  constructor(private creditService: CreditBackService){}
 
   ngOnInit(): void {
     this.getCredits(); 

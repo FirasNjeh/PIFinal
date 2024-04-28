@@ -6,7 +6,7 @@ import { Credit } from 'src/app/model/Credit';
 @Injectable({
   providedIn: 'root'
 })
-export class CreditFrontService {
+export class CreditBackService {
 
   constructor(private http:HttpClient) { }
 

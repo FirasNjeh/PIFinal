@@ -20,7 +20,13 @@ export class AjoutPackBackComponent {
   selectedpackCredit!:PackCredit;
   
   PackCredit:PackCredit[]=[
-    PackCredit.AGRICULTURE,PackCredit.ENTREPRENARIAT
+    PackCredit.AGRICULTURE,
+    PackCredit.ENTREPRENARIAT,
+    PackCredit.ELEVAGE,
+    PackCredit.EDUCATION,
+    PackCredit.URGENCE_FINANCIERE,
+    PackCredit.FORMATION,
+    PackCredit.PROFESSIONNEL
   ]
 
   onAjout():void{
