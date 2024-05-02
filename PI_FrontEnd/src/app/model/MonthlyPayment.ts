@@ -14,5 +14,5 @@ export interface MonthlyPayment {
     status:StatusMonthlyPayment;
 
     //Les relations
-    creditM:Credit;
+  //  creditM:Credit;
 }

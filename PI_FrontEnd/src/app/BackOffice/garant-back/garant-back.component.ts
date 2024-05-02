@@ -28,5 +28,14 @@ export class GarantBackComponent {
       })
     );
   }
+  deleteGarant(id:number): void {
+    // Appel du service pour supprimer le credit avec l'identifiant spécifié
+      this.garantService.delete(id).subscribe(() : void => {
+        window.location.reload();
+      
+      
+      });    
+
+    }
 
 }

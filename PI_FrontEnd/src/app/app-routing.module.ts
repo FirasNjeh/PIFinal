@@ -10,6 +10,13 @@ import { LePackFrontComponent } from './FrontOffice/le-pack-front/le-pack-front.
 import { FormulaireCreditFrontComponent } from './FrontOffice/formulaire-credit-front/formulaire-credit-front.component';
 import { CreditBackComponent } from './BackOffice/credit-back/credit-back.component';
 import { GarantBackComponent } from './BackOffice/garant-back/garant-back.component';
+import { CreditFrontComponent } from './FrontOffice/credit-front/credit-front.component';
+import { LeCreditFrontComponent } from './FrontOffice/le-credit-front/le-credit-front.component';
+import { MonthlyPaymentFrontComponent } from './FrontOffice/monthly-payment-front/monthly-payment-front.component';
+import { AdminComponent } from './BackOffice/admin/admin.component';
+import { LeCreditBackComponent } from './BackOffice/le-credit-back/le-credit-back.component';
+import { SimulateurCreditComponent } from './FrontOffice/simulateur-credit/simulateur-credit.component';
+import { SalaireComponent } from './FrontOffice/salaire/salaire.component';
 
 const routes: Routes = [
 
@@ -33,6 +40,22 @@ const routes: Routes = [
         path:"FormulaireCredit/:id",
         component:FormulaireCreditFrontComponent
       },
+      {
+        path:"SimulateurCredit",
+        component:SimulateurCreditComponent
+      },
+      {
+        path:"Salaire",
+        component:SalaireComponent
+      },
+      {
+        path:"Credits/:id",
+        component:CreditFrontComponent
+      },
+      {
+        path:"Credit/:id",
+        component:LeCreditFrontComponent
+      }
     ]
   },
   
@@ -40,9 +63,14 @@ const routes: Routes = [
     path:"admin",
     component:AllTemplateBackComponent,
     children:[
+      // {
+      //   path:"ajoutPack",
+      //   component:AjoutPackBackComponent
+      // },
+     
       {
-        path:"ajoutPack",
-        component:AjoutPackBackComponent
+        path:"",
+        component:AdminComponent
       },
       {
         path:"afficherPack",
@@ -51,6 +79,10 @@ const routes: Routes = [
       {
         path:"Credits",
         component:CreditBackComponent
+      },
+      {
+        path:"Creditc/:id",
+        component:LeCreditBackComponent
       },
       {
         path:"Garants",

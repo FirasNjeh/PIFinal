@@ -1,6 +1,7 @@
 import { Garant } from "./Garant";
 import { MonthlyPayment } from "./MonthlyPayment";
 import { PackCR } from "./PackCR";
+import { User } from "./User";
 
 export enum CreditHistory{
     NONE_PAYED_YET='NONE_PAYED_YET',
@@ -62,7 +63,7 @@ export interface Credit {
 
     //Les relations 
     packCR:PackCR;
-    //user:UserCR;
+    user:User;
     garant:Garant;
     monthlyPayment:MonthlyPayment[];
 

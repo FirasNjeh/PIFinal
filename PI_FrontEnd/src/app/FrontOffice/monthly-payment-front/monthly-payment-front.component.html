@@ -1,0 +1,17 @@
+<div class="container">
+    <ul class="responsive-table" *ngIf="(mp$ | async) as mps">
+        <li class="table-header" style="text-align: center;">
+            <div class="col col-1"> Id</div>
+            <div class="col col-2">Status</div>
+            <div class="col col-3">Montant</div>
+            <div class="col col-4">Transaction</div>
+        </li>
+
+        <li class="table-row" *ngFor="let p of mps" style="text-align: center;">
+            <div class="col col-1" data-label="Job Id">{{p.id}}</div>
+            <div class="col col-2" data-label="Customer Name">{{p.status}}</div>
+            <div class="col col-3" data-label="Amount">{{p.montant}}</div>
+            <div class="col col-4" data-label="Payment Status"> Sortante </div>
+        </li>
+    </ul>
+</div>

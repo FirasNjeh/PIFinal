@@ -13,4 +13,15 @@ export class CreditBackService {
   public afficherCredits(): Observable<Array<Credit>> {
     return this.http.get<Array<Credit>>('http://localhost:8081/user/Credit/all');
   }
+  //recuperation du credit par id 
+  public findCreditById(id:number):Observable<Credit>{
+    return this.http.get<Credit>('http://localhost:8081/user/Credit/'+id);
+
+  }
+
+  //Suppression du credit par id 
+  public delete(id:number):Observable<Credit>{
+    return this.http.delete<Credit>('http://localhost:8081/user/Credit/delete/'+id);
+
+  }
 }

@@ -44,8 +44,8 @@
                                 <input type="number" class="form-control bg-light border-0" name="salaire_garant"placeholder="Salaire Garant" style="height: 55px;" [(ngModel)]="salaire_garant">
                             </div>
                             <div class="col-12">
-                                <select class="form-select bg-light border-0" aria-label="Default select example"style="height: 55px;"name="selectedgarant" [(ngModel)]="selectedgarant">
-                                    <option selected>Précisez la relation avec votre Garant</option>
+                                <select class="form-select bg-light border-0" placeholder="Précisez la relation avec votre Garant" style="height: 55px;"name="selectedgarant" [(ngModel)]="selectedgarant">
+                                    <!-- <option selected>Précisez la relation avec votre Garant</option> -->
                                     <option *ngFor="let option of RelationGarant" [value]="option">{{option}}</option>
                                 </select>
                             </div>

@@ -17,6 +17,7 @@
                       <th>Nom</th>
                       <th>Prénom </th>
                       <th>Salaire Garant </th>
+                      <th></th>
                     
                       
                     </tr>
@@ -29,6 +30,7 @@
                       <td>{{ g.name }}</td>
                       <td>{{ g.prenomGarant }}</td>
                       <td>{{ g.salaire_garant }}</td>
+                      <td><i class="bx bxs-trash" (click)="deleteGarant(g.id)"></i></td>
                       
                     </tr>
                   </tbody>
