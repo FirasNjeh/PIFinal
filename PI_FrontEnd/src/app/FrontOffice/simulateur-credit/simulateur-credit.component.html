@@ -1,0 +1,22 @@
+
+<body>
+
+<div class="container">
+    <div class="brand-logo">
+        
+    </div>
+    <div class="brand-title">Simulateur credit</div>
+    <div class="inputs">
+      <input type="number" name="montant" placeholder="Montant Crédit"[(ngModel)]="montantCredit" />
+      <hr>
+      <input type="number" name="duree" placeholder="Durée Crédit en Mois" [(ngModel)]="nbMois"/>
+      <hr>
+      <button (click)=" simulerCredit()" >Simuler votre Crédit</button>
+    </div>
+    <hr>
+    <div *ngIf="resultats">
+        <p>Mensualité: {{ resultats[2] }}</p>
+    </div>
+
+</div>
+</body>

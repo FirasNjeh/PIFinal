@@ -1,0 +1,107 @@
+<!-- <main id="main" class="main">
+    <div class="card" *ngIf="credit1 | async as c">
+      <div class="card-body">
+        <h5 class="card-title">Crédit {{ c.id }}</h5>
+        <table>
+          <ng-container *ngIf="c.statusCredit === 'REFUSE' || c.statusCredit === 'CLOTURE'">
+            <tr>
+              <td>id:</td>
+              <td>{{ c.id }}</td>
+            </tr>
+            <tr>
+              <td>Statut Crédit : </td>
+              <td>
+                    <span *ngIf="c.statusCredit === 'REFUSE'" class="badge bg-danger">REFUSE</span>
+                    <span *ngIf="c.statusCredit === 'CLOTURE'" class="badge bg-dark">CLOTURE</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Pack crédit:</td>
+              <td>{{ c.packCredit }}</td>
+            </tr>
+            <tr>
+              <td>Type Crédit:</td>
+              <td>{{ c.typeCredit }}</td>
+            </tr>
+            <tr>
+              <td>Montant:</td>
+              <td>{{ c.montant }}</td>
+            </tr>
+            <tr>
+              <td>Duree:</td>
+              <td>{{ c.duree }}</td>
+            </tr>
+            <tr>
+              <td>Relation Garant:</td>
+              <td>{{ c.realtionGarant }}</td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="c.statusCredit === 'APPROUVE'">
+            <tr>
+              <td>id:</td>
+              <td>{{ c.id }}</td>
+            </tr>
+            <tr>
+              <td>Statut Crédit : </td>
+              <td>
+                    <span *ngIf="c.statusCredit === 'APPROUVE'" class="badge bg-success">APPROUVE</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Type Crédit:</td>
+              <td>{{ c.typeCredit }}</td>
+            </tr>
+            <tr>
+              <td>Statut Crédit:</td>
+              <td>{{ c.statusCredit }}</td>
+            </tr>
+            <tr>
+              <td>Pack crédit:</td>
+              <td>{{ c.packCredit }}</td>
+            </tr>
+            <tr>
+              <td>Montant:</td>
+              <td>{{ c.montant }}</td>
+            </tr>
+            <tr>
+              <td>Duree:</td>
+              <td>{{ c.duree }}</td>
+            </tr>
+            <tr>
+              <td>Date début Crédit:</td>
+              <td>{{ c.dateDeb }}</td>
+            </tr>
+            <tr>
+              <td>Date du prochain paiement:</td>
+              <td>{{ c.datepp }}</td>
+            </tr>
+            <tr>
+              <td>Montant Restant:</td>
+              <td>{{ c.montantRestant }}</td>
+            </tr>
+            <tr>
+              <td>Amortissement:</td>
+              <td>{{ c.amortissement }}</td>
+            </tr>
+            <tr>
+              <td>Annuité:</td>
+              <td>{{ c.annuite }}</td>
+            </tr>
+            <tr>
+              <td>Late Times:</td>
+              <td>{{ c.lateTimes }}</td>
+            </tr>
+            <tr>
+              <td>Credit History:</td>
+              <td>{{ c.creditHistory }}</td>
+            </tr>
+            <tr>
+              <td>Relation Garant:</td>
+              <td>{{ c.realtionGarant }}</td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </main>
+   -->

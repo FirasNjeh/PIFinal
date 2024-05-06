@@ -1,0 +1,21 @@
+
+<body>
+<div class="container">
+    <div class="brand-logo">
+        
+    </div>
+    <div class="brand-title">Etes vous éligible pour prendre un crédit ?</div>
+    <div class="inputs">
+      <input type="number" name="Salaire" placeholder="Votre salaire Mensuel" [(ngModel)]="salaire"/>
+      <hr>
+      <input type="number" name="duree" placeholder="Durée Crédit en Mois"[(ngModel)]="nbMois" />
+      <hr>
+      <button (click)=" Max()" >Votre Crédit Maximal est </button>
+    </div>
+    <hr>
+    <div *ngIf="resultats">
+        <p>{{ resultats }}</p>
+    </div>
+
+</div>
+</body>
