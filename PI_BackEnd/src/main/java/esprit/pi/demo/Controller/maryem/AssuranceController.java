@@ -1,8 +1,9 @@
 package esprit.pi.demo.Controller.maryem;
 
 
-import esprit.pi.demo.Services.IAssurance;
-import esprit.pi.demo.entities.*;
+import esprit.pi.demo.Services.Maryem.IAssurance;
+import esprit.pi.demo.entities.Enumeration.*;
+import esprit.pi.demo.entities.Maryem.Assurance;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
