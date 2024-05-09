@@ -4,30 +4,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import esprit.pi.demo.DTO.Firas.AuthenticationRequest;
 import esprit.pi.demo.DTO.Firas.AuthenticationResponse;
 import esprit.pi.demo.DTO.Firas.RegisterRequest;
+import esprit.pi.demo.DTO.Firas.VerificationRequest;
 import esprit.pi.demo.Repository.Firas.PortefeuilleRepository;
 import esprit.pi.demo.Repository.Firas.TokenRepository;
 import esprit.pi.demo.Repository.Firas.UserRepository;
 import esprit.pi.demo.Security.Jwt.JwtService;
-//import esprit.pi.demo.Services.EmailService;
+import esprit.pi.demo.Services.Firas.EmailService;
+import esprit.pi.demo.Services.Firas.ConnectionLogService;
 import esprit.pi.demo.Services.Firas.PortefeuilleService;
 import esprit.pi.demo.entities.Firas.Portefeuille;
 import esprit.pi.demo.entities.Firas.Token;
 import esprit.pi.demo.entities.Enumeration.TokenType;
 import esprit.pi.demo.entities.Firas.User;
+import esprit.pi.demo.tfa.TwoFactorAuthenticationService;
+import jakarta.mail.MessagingException;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Properties;
 
 @Service
 @AllArgsConstructor
@@ -39,7 +42,9 @@ public class AuthenticationServiceImp implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final PortefeuilleRepository portefeuilleRepository;
     private final PortefeuilleService portefeuilleService;
-//    private EmailService emailService;
+    private final TwoFactorAuthenticationService tfaService;
+    private final ConnectionLogService connectionLogService;
+    private EmailService emailService;
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -57,7 +62,12 @@ public class AuthenticationServiceImp implements AuthenticationService {
                 .salaire(request.getSalaire())
                 .age(calculateAge(request.getDateNaissance()))
                 .banni(false)
+                .mfEnabled(request.isMfEnabled())
                 .build();
+        if(request.isMfEnabled())
+        {
+            user.setSecret(tfaService.generateNewSecret());
+        }
 
         var savedUser = userRepository.save(user);
         Portefeuille portefeuille = new Portefeuille();
@@ -67,26 +77,22 @@ public class AuthenticationServiceImp implements AuthenticationService {
         savedUser.setPortefeuilleUser(portefeuille);
         portefeuille.setRib(savedUser.getNumtel());
         userRepository.save(savedUser);
-        String to = savedUser.getEmail(); // replace with the actual recipient email
+
+
+
+        String to = savedUser.getEmail();
         String subject = "Confirmation d'inscription";
-        String body = "Bonjour " + savedUser.getNom() + ",\n\nVotre inscription à notre site FundHub a été confirmée avec succès.";
+        String text = "Bonjour " + savedUser.getNom() + ",\n\nVotre inscription à notre site FundHub a été confirmée avec succès.";
+        emailService.sendEmail(to, subject, text);
 
-        try {
-            sendEmail(to, subject, body);
-        } catch (MessagingException e) {
-            e.printStackTrace(); // handle the exception according to your application's needs
-        }
-
-//        String to = savedUser.getEmail();
-//        String subject = "Confirmation d'inscription";
-//        String text = "Bonjour " + savedUser.getNom() + ",\n\nVotre inscription à notre site FundHub a été confirmée avec succès.";
-//        emailService.sendEmail(to, subject, text);
         var jwtToken = jwtService.generateToken(user);
         saveUserToken(savedUser, jwtToken);
         var refreshToken =jwtService.generateRefreshToken(user) ;
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
+                .mfEnabled(user.isMfEnabled())
+                .secretImageUri(tfaService.generatrQrCodeImageUri(user.getSecret()))
                 .build();
     }
     private void revokeAllUserTokens(User user){
@@ -119,6 +125,14 @@ public class AuthenticationServiceImp implements AuthenticationService {
         );
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
+        connectionLogService.logConnection(user.getId());
+        if(user.isMfEnabled()){
+            return AuthenticationResponse.builder()
+                    .accessToken("")
+                    .refreshToken("")
+                    .mfEnabled(true)
+                    .build();
+        }
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user,jwtToken);
@@ -126,6 +140,7 @@ public class AuthenticationServiceImp implements AuthenticationService {
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
+                .mfEnabled(false)
                 .build();
     }
 
@@ -157,6 +172,47 @@ public class AuthenticationServiceImp implements AuthenticationService {
         }
 
     }
+
+    @Override
+    public AuthenticationResponse verifyCode(VerificationRequest verificationRequest) {
+        User user = userRepository
+                .findByEmail(verificationRequest.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("No user found with %S", verificationRequest.getEmail()))
+                );
+        if (tfaService.isOtpNotValid(user.getSecret(), verificationRequest.getCode())) {
+
+            throw new BadCredentialsException("Code is not correct");
+        }
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .accessToken(jwtToken)
+                .mfEnabled(user.isMfEnabled())
+                .build();
+    }
+
+    @Override
+    public void forgotPassword(String email) {
+        User user =userRepository.findByEmail(email)
+                .orElseThrow(
+                        ()->new RuntimeException("User not found with this email "+email));
+        try {
+            emailService.sendSetPassword(email);
+        } catch (MessagingException e) {
+            throw new RuntimeException("Unable to send set password email");
+        }
+    }
+
+    @Override
+    public void setPassword(String email, String newPassword) {
+        User user =userRepository.findByEmail(email)
+                .orElseThrow(
+                        ()->new RuntimeException("User not found with this email "+email));
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setMdp(encodedPassword);
+        userRepository.save(user);
+    }
+
     private int calculateAge(LocalDate dateNaissance) {
         LocalDate currentDate = LocalDate.now();
         int age = currentDate.getYear() - dateNaissance.getYear();
@@ -166,33 +222,5 @@ public class AuthenticationServiceImp implements AuthenticationService {
             age--;
         }
         return age;
-    }
-    private void sendEmail(String to, String subject, String body) throws MessagingException {
-        // Send an email
-        // ...
-        String from = "njehfiras@gmail.com";
-        String password = "breu joma uzhw yipn";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(from));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-        message.setSubject(subject);
-        //   message.setText(body);
-        message.setContent(body, "text/html");
-
-        Transport.send(message);
     }
 }

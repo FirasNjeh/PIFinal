@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.container span {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.container input {
+    background-color: #f0f2f5;
+    border: none;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.container button.primary {
+    background-color: #512da8;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    bottom: 200px;
+    left: 100%;
+    transform: translateX(100%);
+    transition: background-color 0.3s ease;
+     
+    
+}
+
+.container button.primary:hover {
+    background-color: #35079f;
+}
+
+.container a {
+    color: #333333;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+.container button.secondary {
+    background-color: transparent;
+    color: #2196F3; 
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; 
+    right: 515px; 
+}
+
+.container button.secondary:hover {
+    text-decoration: underline;
+}
+.container .radio-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container .radio-buttons label {
+    margin-right: 20px; 
+}
+
+
+

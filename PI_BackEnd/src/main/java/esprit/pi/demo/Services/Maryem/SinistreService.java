@@ -5,6 +5,7 @@ import esprit.pi.demo.Repository.Firas.PortefeuilleRepository;
 import esprit.pi.demo.Repository.Maryem.SinistreRepository;
 
 import esprit.pi.demo.Repository.Maryem.TransactionAssuranceRepository;
+import esprit.pi.demo.Services.Firas.EmailService;
 import esprit.pi.demo.entities.Enumeration.EtatSinistre;
 import esprit.pi.demo.entities.Enumeration.TypeTransaction;
 import esprit.pi.demo.entities.Enumeration.TypeTransaction1;
@@ -19,14 +20,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.Set;
 
@@ -39,6 +32,7 @@ public class SinistreService implements ISinistreAssurance {
 
     private PortefeuilleRepository portefeuilleepository;
     private TransactionAssuranceRepository transactionAssurancerepository;
+    private EmailService emailService;
 
     @Override
 
@@ -84,34 +78,7 @@ public class SinistreService implements ISinistreAssurance {
 
     }
 
-    private void sendEmail(String to, String subject, String body) throws MessagingException {
-        // Send an email
-        // ...
-        String from = "techwork414@gmail.com";
-        String password = "pacrvzlvscatwwkb";
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(from));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-        message.setSubject(subject);
-        //   message.setText(body);
-        message.setContent(body, "text/html");
-
-        Transport.send(message);
-    }
     @Override
     public Set<Sinistre> getListSinistesByAssurance(int idassur) {
         return repository.findByAssurance_Id(idassur);
@@ -126,12 +93,7 @@ public class SinistreService implements ISinistreAssurance {
         String to = "maryembouchahoua@gmail.com"; // replace with the actual recipient email
         String subject = "New Sinistre Added";
         String body = "A new Sinistre has been added with details:";
-
-        try {
-            sendEmail(to, subject, body);
-        } catch (MessagingException e) {
-            e.printStackTrace(); // handle the exception according to your application's needs
-        }
+        emailService.sendEmail(to,subject,body);
         return repository.save(sinistre);
     }
     @Override

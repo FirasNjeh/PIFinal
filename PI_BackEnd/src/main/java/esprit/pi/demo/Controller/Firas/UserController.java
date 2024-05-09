@@ -11,7 +11,7 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/fn")
 public class UserController {
 
     private IServiceUser serviceUser;
@@ -30,6 +30,10 @@ public class UserController {
     public ResponseEntity<?> updateCurrent(Principal connectedUser, @RequestBody UpdateUserRequest updatedUser) {
             serviceUser.updateCurrentUser(connectedUser,updatedUser);
         return ResponseEntity.ok().build() ;
+    }
+    @GetMapping("/currentUser")
+    public User getCurrentUser(Principal connectedUser ){
+        return serviceUser.getCurrentUser(connectedUser);
     }
 
 }

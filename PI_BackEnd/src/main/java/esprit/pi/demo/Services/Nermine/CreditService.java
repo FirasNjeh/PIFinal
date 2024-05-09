@@ -9,6 +9,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import esprit.pi.demo.Repository.Nermine.CreditRepository;
 import esprit.pi.demo.Repository.Nermine.TransactionCRepository;
 import esprit.pi.demo.Repository.Firas.UserRepository;
+import esprit.pi.demo.Services.Firas.EmailService;
 import esprit.pi.demo.Services.Firas.PortefeuilleService;
 import esprit.pi.demo.Services.Firas.ServiceUser;
 import esprit.pi.demo.entities.Enumeration.CreditHistory;
@@ -28,9 +29,7 @@ import org.json.JSONObject;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -54,6 +53,7 @@ public class CreditService implements ICreditService {
     private ServiceUser se;
     private TransactionCService trans;
     private PortefeuilleService port;
+    private EmailService emailService;
     //private MonthlyPaymentService mps;
 
     //client
@@ -121,7 +121,8 @@ public class CreditService implements ICreditService {
         String tomail="nerminenafti@gmail.com";
         String subject="Credit approuvé";
         String body ="Votre credit a ete approuvé nshlh mabrouk ";
-        try { sendEmail(tomail,subject,body);} catch (MessagingException e ) {e.printStackTrace();}}
+            emailService.sendEmail(tomail,subject,body);
+        }
 
     //si credit non approuvé
         else
@@ -132,7 +133,8 @@ public class CreditService implements ICreditService {
             String tomail="nerminenafti@gmail.com";
             String subject="Credit rejeté";
             String body ="Votre credit a ete rejeté ";
-            try { sendEmail(tomail,subject,body);} catch (MessagingException e ) {e.printStackTrace();}}
+            emailService.sendEmail(tomail,subject,body);
+        }
 
 
 return credit;
@@ -435,31 +437,6 @@ return credit;
         return matrice;
     }
 
-    public void sendEmail(String tomail, String Subject, String body) throws MessagingException {
-
-        String from ="techwork414@gmail.com";
-        String password="pacrvzlvscatwwkb";
-
-        Properties props=new Properties();
-        props.put("mail.smtp.auth","true");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.host","smtp.gmail.com");
-        props.put("mail.smtp.port","587");
-
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        Message message=new MimeMessage(session);
-        message.setFrom(new InternetAddress(from));
-        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(tomail));
-        message.setSubject(Subject);
-        message.setContent(body,"text/html");
-
-        Transport.send(message);
-    }
 
 
     @Override

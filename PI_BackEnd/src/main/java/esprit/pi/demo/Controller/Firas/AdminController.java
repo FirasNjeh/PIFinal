@@ -2,11 +2,13 @@ package esprit.pi.demo.Controller.Firas;
 
 import esprit.pi.demo.DTO.Firas.AgeGroupStatisticsDTO;
 import esprit.pi.demo.DTO.Firas.GenderStatisticsDTO;
+import esprit.pi.demo.Services.Firas.ConnectionLogService;
 import esprit.pi.demo.Services.Firas.IServiceUser;
 import esprit.pi.demo.entities.Firas.User;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -15,6 +17,7 @@ import java.util.List;
 public class AdminController {
 
     private IServiceUser serviceUser;
+    private ConnectionLogService connectionLogService;
 
     @GetMapping("/all")
    public List<User> read(){
@@ -49,8 +52,8 @@ public class AdminController {
         return serviceUser.calculerAgeMoyenUsers();
     }
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
-        return serviceUser.supprimer(id);
+    public void delete(@PathVariable int id){
+         serviceUser.supprimer(id);
     }
     @GetMapping("/sortbyage")
     public List<User> trierUtilisateurParAge() {
@@ -100,5 +103,20 @@ public class AdminController {
     public User findByMatricule_fiscale(@PathVariable int matriculeFiscale) {
         return serviceUser.findByMatricule_fiscale(matriculeFiscale);
     }
-
+    @GetMapping("/currentUser")
+    public User getCurrentUser(Principal connectedUser ){
+        return serviceUser.getCurrentUser(connectedUser);
+    }
+    @GetMapping("/nbretotalUtilisateur")
+    public int nbreTotalUtilisateurs() {
+        return serviceUser.nbreTotalUtilisateurs();
+    }
+    @GetMapping("/salairemoyen")
+    public double calculerSalaireMoyen() {
+        return serviceUser.calculerSalaireMoyen();
+    }
+    @GetMapping("/nbrConnexion")
+    public int nbreConnexionJournaliere() {
+        return connectionLogService.nbreConnexionJournaliere();
+    }
 }

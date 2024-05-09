@@ -1,17 +1,16 @@
 package esprit.pi.demo.Services.Soumaya;
 
+import esprit.pi.demo.Services.Firas.EmailService;
 import esprit.pi.demo.entities.Enumeration.PriorityLevel;
 import esprit.pi.demo.entities.Soumaya.Reclamation;
 import esprit.pi.demo.entities.Enumeration.StatusRC;
 import esprit.pi.demo.Repository.Soumaya.ReclamationRepository;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -22,34 +21,8 @@ import java.util.Properties;
 public class ReclamationService {
     @Autowired
     private ReclamationRepository recRepository;
+    private EmailService emailService;
 
-    private void sendEmail(String to, String subject, String body) throws MessagingException {
-
-        String from = "techwork414@gmail.com";
-        String password = "pacrvzlvscatwwkb";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(from));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-        message.setSubject(subject);
-        //   message.setText(body);
-        message.setContent(body, "text/html");
-
-        Transport.send(message);
-    }
 
     public void saveReclamationWithImage(String object, String description, StatusRC statusRC, Date dateRC, PriorityLevel priorityLevel, String typeRC, MultipartFile file) throws IOException {
         Reclamation reclamation = new Reclamation();
@@ -68,13 +41,9 @@ public class ReclamationService {
         //sending email
         String to = "soumaya.nabli7@gmail.com";
         String subject = "Successful Addition of Your Claim";
-        String body = "We're pleased to inform you that your claim has been successfully added to our system. We've received your request and are committed to processing it promptly.";
+        String text = "We're pleased to inform you that your claim has been successfully added to our system. We've received your request and are committed to processing it promptly.";
 
-        try {
-            sendEmail(to, subject, body);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        emailService.sendEmail(to,subject,text);
         return reclamation;
     }
     public List<Reclamation> saveReclamations(List<Reclamation> reclamations){

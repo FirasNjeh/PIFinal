@@ -34,6 +34,7 @@ public class User implements UserDetails {
     private LocalDate dateNaissance;
     private int age;
     private int numtel;
+    @Column(unique = true)
     private String email;
     private String adresse;
     private String mdp;
@@ -42,51 +43,65 @@ public class User implements UserDetails {
     private Genre genre;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private int nbr_credit;// ta3 la pute
-    private int AncienneteEmploi; //ta3 la pute
+    private int nbr_credit;
+    private int AncienneteEmploi;
     private boolean etat;
     private String image;
     private float salaire;
     private int matriculeFiscale;
     @Getter
     private boolean banni;
+    //double authentification
+    private boolean mfEnabled;
+    private String secret;
+    @JsonIgnore
     @ToString.Exclude
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Portefeuille portefeuilleUser;
+    @JsonIgnore
     @ToString.Exclude
-    @ManyToMany(mappedBy = "userNews")
+    @ManyToMany(mappedBy = "userNews",cascade = CascadeType.ALL)
     private List<NewsBaha> newsBaha;
+    @JsonIgnore
     @ToString.Exclude
-    @OneToMany(mappedBy = "userAssurance")
+    @OneToMany(mappedBy = "userAssurance",cascade = CascadeType.ALL)
     private List <Assurance> assurances;
+    @JsonIgnore
     @ToString.Exclude
-    @OneToMany (mappedBy = "userCR")
+    @OneToMany (mappedBy = "userCR",cascade = CascadeType.ALL)
     private List<Credit> credits;
+    @JsonIgnore
     @ToString.Exclude
-   @OneToMany(mappedBy = "userReclamation")
+   @OneToMany(mappedBy = "userReclamation",cascade = CascadeType.ALL)
     private List<Reclamation> reclamations;
+    @JsonIgnore
     @ToString.Exclude
-   @ManyToMany(mappedBy = "usersSalon")
+   @ManyToMany(mappedBy = "usersSalon",cascade = CascadeType.ALL)
     private List <Salon> salons;
+    @JsonIgnore
     @ToString.Exclude
-    @OneToMany(mappedBy = "userToken")
+    @OneToMany(mappedBy = "userToken",cascade = CascadeType.ALL)
     private List<Token> tokens;
-    @OneToOne(mappedBy = "sender")
+    @JsonIgnore
+    @ToString.Exclude
+    @OneToOne(mappedBy = "sender",cascade = CascadeType.ALL)
     private MessageChat messageSender;
-    @OneToOne(mappedBy = "receiver")
+    @JsonIgnore
+    @OneToOne(mappedBy = "receiver",cascade = CascadeType.ALL)
     private MessageChat messageReceiver;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Post> posts;
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Comment> comments;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Groupe groupe;
-    @OneToMany (mappedBy = "userNotif")
+    @JsonIgnore
+    @OneToMany (mappedBy = "userNotif",cascade = CascadeType.ALL)
     private List<Notification> notifications;
 
 
