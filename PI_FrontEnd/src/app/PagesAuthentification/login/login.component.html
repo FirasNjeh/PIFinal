@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="login.component.css">
+    <link href="https://cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet"  >
+    <link href="https://cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css" rel="stylesheet"  >
+    <link href="https://cdn.syncfusion.com/ej2/ej2-popups/styles/material.css" rel="stylesheet"  >
+    <link href="https://cdn.syncfusion.com/ej2/ej2-calendars/styles/material.css" rel="stylesheet"  >
+
+    <title>Modern Login Page </title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        
+        <div class="form-container sign-in">
+            <form>
+                <h1>Se connecter</h1>
+                
+                <span>utiliser votre email, votre mot de passe</span>
+                <input [(ngModel)]="authRequest.email" name="email"  type="email" class="form-control" id="login" placeholder="Email">
+                <input [(ngModel)]="authRequest.mdp" name="mdp"  type="password" class="form-control" id="password" placeholder="Mot de Passe">
+                <a href="forgotPassword" >Mot de Passe oublié?</a>
+                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"></ngx-recaptcha2>
+                <div *ngIf="captchaErrorMsg" class="error-message">{{ captchaErrorMsg }}</div>                
+
+                <button (click)="login()" type="button" class="btn btn-primary">
+                    <em class="fas fa-sign-in-alt"></em>
+                    Se connecter</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button (click)="onLoginClick()" class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bonjour</h1>
+                    <p>Enregistrez-vous avec vos données personnelles pour utiliser toutes les fonctionnalités du site.</p>
+                    <button  (click)="Register()" class="hidden" id="register">Créer Nouveau compte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="C:\Users\njehf\Desktop\PI200 - Copie\PI_FrontEnd\src\app\PagesAuthentification\login\login.component.ts"></script>
+    
+    
+</body>
+
+</html>
