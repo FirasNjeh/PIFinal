@@ -2,6 +2,7 @@ package esprit.pi.demo.Services.Nermine;
 
 import esprit.pi.demo.Repository.Nermine.CreditRepository;
 import esprit.pi.demo.Repository.Nermine.MonthlyPaymentRepository;
+import esprit.pi.demo.Services.Firas.EmailService;
 import esprit.pi.demo.Services.Firas.PortefeuilleService;
 import esprit.pi.demo.entities.Enumeration.CreditHistory;
 import esprit.pi.demo.entities.Enumeration.StatusCredit;
@@ -13,7 +14,6 @@ import esprit.pi.demo.entities.Nermine.TransactionCredit;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -28,6 +28,7 @@ public class MonthlyPaymentService implements IMonthlyPaymentService {
     private CreditService cr;
     private PortefeuilleService port;
     private TransactionCService trans;
+    private EmailService emailService;
 
     CreditRepository repository1;
 
@@ -81,7 +82,9 @@ public class MonthlyPaymentService implements IMonthlyPaymentService {
                 String tomail="nerminenafti@gmail.com";
                 String subject="Credit Cloturé";
                 String body ="Votre credit a ete cloturé! Vous avez payé tout votre crédit nshlh mabrouk ";
-                try { cr.sendEmail(tomail,subject,body);} catch (MessagingException e ) {e.printStackTrace();}}
+                emailService.sendEmail(tomail,subject,body);
+
+            }
 
             //transaction
             transactionC.setRib_source(port.getPortefeuilleById(cut).getRib());

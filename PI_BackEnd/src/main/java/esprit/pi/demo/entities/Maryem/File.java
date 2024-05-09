@@ -3,6 +3,7 @@ package esprit.pi.demo.entities.Maryem;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import esprit.pi.demo.entities.Maryem.Sinistre;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

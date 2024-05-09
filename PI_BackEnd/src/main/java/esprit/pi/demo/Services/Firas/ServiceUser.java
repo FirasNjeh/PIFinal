@@ -4,8 +4,10 @@ import esprit.pi.demo.DTO.Firas.AgeGroupStatisticsDTO;
 import esprit.pi.demo.DTO.Firas.ChangePasswordRequest;
 import esprit.pi.demo.DTO.Firas.GenderStatisticsDTO;
 import esprit.pi.demo.DTO.Firas.UpdateUserRequest;
+import esprit.pi.demo.Repository.Firas.TokenRepository;
 import esprit.pi.demo.Repository.Firas.UserRepository;
 import esprit.pi.demo.entities.Enumeration.Genre;
+import esprit.pi.demo.entities.Firas.Token;
 import esprit.pi.demo.entities.Firas.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class ServiceUser implements IServiceUser {
 
   private UserRepository userRepository;
+  private TokenRepository tokenRepository;
   private final PasswordEncoder passwordEncoder;
     @Override
     public User creer(User user) {
@@ -62,9 +65,18 @@ public class ServiceUser implements IServiceUser {
 
 
     @Override
-    public String supprimer(int id) {
-        userRepository.deleteById(id);
-        return "Utilisateur supprimer" ;
+    public void supprimer(int id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            List<Token> tokens = user.getTokens();
+            // Supprimer les tokens associés à l'utilisateur
+            for (Token token : tokens) {
+                tokenRepository.delete(token);
+            }
+            // Ensuite, supprimer l'utilisateur lui-même
+            userRepository.deleteById(id);
+        }
     }
 
     @Override
@@ -248,6 +260,15 @@ public class ServiceUser implements IServiceUser {
         userRepository.save(currentUser) ;
     }
 
+    @Override
+    public int nbreTotalUtilisateurs() {
+        return userRepository.nbreTotalUtilisateurs();
+    }
+
+    @Override
+    public double calculerSalaireMoyen() {
+        return userRepository.calculerSalaireMoyen();
+    }
 
 
     public int calculateAge(LocalDate dateNaissance) {

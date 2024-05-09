@@ -1,8 +1,8 @@
-package esprit.pi.demo.Repository;
+package esprit.pi.demo.Repository.Maryem;
 
-import esprit.pi.demo.entities.File;
-import esprit.pi.demo.entities.PackAssur;
-import esprit.pi.demo.entities.Sinistre;
+import esprit.pi.demo.entities.Maryem.File;
+import esprit.pi.demo.entities.Maryem.PackAssur;
+import esprit.pi.demo.entities.Maryem.Sinistre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
 package esprit.pi.demo.Security.Jwt;
 
+import esprit.pi.demo.entities.Firas.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -67,6 +68,7 @@ public class JwtServiceImp  implements JwtService {
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
+                .claim("role", ((User) userDetails).getRole().toString()) // Ajoute le rôle de l'utilisateur comme une claim personnalisée
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInkey(), SignatureAlgorithm.HS256)

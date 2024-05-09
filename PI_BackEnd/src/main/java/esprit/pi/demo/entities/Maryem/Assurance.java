@@ -1,6 +1,8 @@
-package esprit.pi.demo.entities;
+package esprit.pi.demo.entities.Maryem;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import esprit.pi.demo.entities.Enumeration.*;
+import esprit.pi.demo.entities.Firas.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -74,10 +76,10 @@ public class Assurance implements Serializable {
     @JsonIgnore
     @ToString.Exclude
     @OneToMany (mappedBy = "assurance")
-    private Set<Sinistre> sinistres;
+    private Set<esprit.pi.demo.entities.Maryem.Sinistre> sinistres;
     @ToString.Exclude
     @ManyToOne
-    private PackAssur packAssur;
+    private esprit.pi.demo.entities.Maryem.PackAssur packAssur;
     @JsonIgnore
     @ToString.Exclude
     @ManyToOne

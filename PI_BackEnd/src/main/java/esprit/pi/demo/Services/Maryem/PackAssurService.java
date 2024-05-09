@@ -1,7 +1,8 @@
-package esprit.pi.demo.Services;
+package esprit.pi.demo.Services.Maryem;
 
-import esprit.pi.demo.Repository.PackAssuranceRepository;
-import esprit.pi.demo.entities.PackAssur;
+import esprit.pi.demo.Repository.Maryem.PackAssuranceRepository;
+
+import esprit.pi.demo.entities.Maryem.PackAssur;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,8 +36,9 @@ public class PackAssurService implements IPackAssurService {
         }
         //agent
         @Override
-        public void deletePackAssur (int id){
+        public String deletePackAssur (int id){
             repository.deleteById(id);
+            return "Pack Assurance supprimé !!" +id;
         }
         //agent
         @Override

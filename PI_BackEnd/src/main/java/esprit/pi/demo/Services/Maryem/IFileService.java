@@ -1,6 +1,6 @@
-package esprit.pi.demo.Services;
+package esprit.pi.demo.Services.Maryem;
 
-import esprit.pi.demo.entities.File;
+import esprit.pi.demo.entities.Maryem.File;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

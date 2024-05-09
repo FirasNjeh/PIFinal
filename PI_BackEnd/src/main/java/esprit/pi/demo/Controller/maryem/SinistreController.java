@@ -1,13 +1,11 @@
-package esprit.pi.demo.Controller;
+package esprit.pi.demo.Controller.maryem;
 
-import esprit.pi.demo.Services.IFileService;
-import esprit.pi.demo.Services.ISinistreAssurance;
-import esprit.pi.demo.Services.SinistreService;
+import esprit.pi.demo.Services.Maryem.IFileService;
+import esprit.pi.demo.Services.Maryem.ISinistreAssurance;
 
-import esprit.pi.demo.dto.ResponseFile;
-import esprit.pi.demo.dto.ResponseMessage;
-import esprit.pi.demo.entities.Assurance;
-import esprit.pi.demo.entities.Sinistre;
+import esprit.pi.demo.DTO.Maryem.ResponseFile;
+import esprit.pi.demo.DTO.Maryem.ResponseMessage;
+import esprit.pi.demo.entities.Maryem.Sinistre;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-@CrossOrigin("*")
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user/Siniste")

@@ -1,11 +1,25 @@
-package esprit.pi.demo.Services;
+package esprit.pi.demo.Services.Maryem;
 
-import esprit.pi.demo.Repository.*;
-import esprit.pi.demo.dto.AgricoleAssuranceDTO;
-import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.dto.SanteAssuranceDTO;
-import esprit.pi.demo.dto.ScolaireAssuranceDTO;
-import esprit.pi.demo.entities.*;
+import esprit.pi.demo.Repository.Firas.PortefeuilleRepository;
+import esprit.pi.demo.Repository.Firas.UserRepository;
+import esprit.pi.demo.Repository.Maryem.AssuranceRepository;
+import esprit.pi.demo.Repository.Maryem.PackAssuranceRepository;
+import esprit.pi.demo.Repository.Maryem.SinistreRepository;
+import esprit.pi.demo.Repository.Maryem.TransactionAssuranceRepository;
+
+import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
+
+
+import esprit.pi.demo.entities.Enumeration.*;
+import esprit.pi.demo.entities.Firas.Portefeuille;
+import esprit.pi.demo.entities.Firas.User;
+import esprit.pi.demo.entities.Maryem.Assurance;
+import esprit.pi.demo.entities.Maryem.TransactionAssurance;
+import esprit.pi.demo.entities.Maryem.PackAssur;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +61,7 @@ public class AssuranceService implements IAssurance {
     public void deleteAssurance(int id){
         repository.deleteById(id);
     }
-   // @Override
+    // @Override
 //role : adminn+agent
 //    public Assurance updateAssurance(int id , Assurance assurance ){
 //        Assurance existingAssurance=repository.findById(assurance.getId()).orElse(null);

@@ -1,11 +1,11 @@
-package esprit.pi.demo.Services;
+package esprit.pi.demo.Services.Maryem;
 
-import esprit.pi.demo.Repository.FileRepository;
-import esprit.pi.demo.Repository.PackAssuranceRepository;
-import esprit.pi.demo.Repository.SinistreRepository;
-import esprit.pi.demo.entities.File;
-import esprit.pi.demo.entities.PackAssur;
-import esprit.pi.demo.entities.Sinistre;
+import esprit.pi.demo.Repository.Maryem.FileRepository;
+import esprit.pi.demo.Repository.Maryem.PackAssuranceRepository;
+import esprit.pi.demo.Repository.Maryem.SinistreRepository;
+import esprit.pi.demo.entities.Maryem.File;
+import esprit.pi.demo.entities.Maryem.PackAssur;
+import esprit.pi.demo.entities.Maryem.Sinistre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

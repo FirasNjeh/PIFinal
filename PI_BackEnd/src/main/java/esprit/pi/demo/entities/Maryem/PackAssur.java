@@ -1,6 +1,8 @@
-package esprit.pi.demo.entities;
+package esprit.pi.demo.entities.Maryem;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import esprit.pi.demo.entities.Enumeration.PackAssurance;
+import esprit.pi.demo.entities.Maryem.File;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,5 +32,5 @@ public class PackAssur implements Serializable {
     @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy="packAssur")
-    private Set<Assurance> assurances;
+    private Set<esprit.pi.demo.entities.Maryem.Assurance> assurances;
 }

@@ -1,6 +1,7 @@
-package esprit.pi.demo.Services;
+package esprit.pi.demo.Services.Maryem;
 
-import esprit.pi.demo.entities.PackAssur;
+
+import esprit.pi.demo.entities.Maryem.PackAssur;
 
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface IPackAssurService {
 
     PackAssur getPackAssurById(int id);
 
-    void deletePackAssur(int id);
+    String deletePackAssur(int id);
 
     PackAssur updatePackAssur(int id,PackAssur packAssur);
 

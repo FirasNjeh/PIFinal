@@ -1,17 +1,19 @@
-package esprit.pi.demo.Controller;
+package esprit.pi.demo.Controller.maryem;
 
 
-import esprit.pi.demo.Services.IAssurance;
-import esprit.pi.demo.entities.*;
+import esprit.pi.demo.Services.Maryem.IAssurance;
+//import esprit.pi.demo.entities.*;
+import esprit.pi.demo.entities.Maryem.Assurance;
+import esprit.pi.demo.entities.Enumeration.*;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import esprit.pi.demo.dto.AgricoleAssuranceDTO;
-import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.dto.SanteAssuranceDTO;
-import esprit.pi.demo.dto.ScolaireAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
 import java.util.List;
 import java.util.Set;
 @CrossOrigin("*")
@@ -22,7 +24,7 @@ import java.util.Set;
 public class AssuranceController {
 
     private IAssurance service;
-//    @PostMapping("/addAssurance")
+    //    @PostMapping("/addAssurance")
 //    public Assurance addAssurance(@RequestBody Assurance assurance)
 //    {
 //    return service.saveAssurance(assurance);
@@ -42,7 +44,7 @@ public class AssuranceController {
     // }
     @DeleteMapping("/delete/{id}")
     public void deleteAssurance(@PathVariable int id) {
-         service.deleteAssurance(id);
+        service.deleteAssurance(id);
     }
 
     @GetMapping("/getByPackAssur/{idpack}")

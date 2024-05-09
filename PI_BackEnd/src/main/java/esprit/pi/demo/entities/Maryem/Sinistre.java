@@ -1,6 +1,8 @@
-package esprit.pi.demo.entities;
+package esprit.pi.demo.entities.Maryem;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import esprit.pi.demo.entities.Enumeration.EtatSinistre;
+import esprit.pi.demo.entities.Maryem.File;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,5 +33,5 @@ public class Sinistre implements Serializable {
     private Set<File> images;
     @ToString.Exclude
     @ManyToOne
-    private Assurance assurance;
+    private esprit.pi.demo.entities.Maryem.Assurance assurance;
 }

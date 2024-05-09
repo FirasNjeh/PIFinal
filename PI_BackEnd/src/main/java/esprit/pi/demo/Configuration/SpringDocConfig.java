@@ -26,22 +26,22 @@ public class SpringDocConfig {
     public GroupedOpenApi UserApi() {
         return GroupedOpenApi.builder()
                 .group("Only User Management API")
-                .pathsToMatch("/user/**")
+                .pathsToMatch("/user/fn/**")
                 .pathsToExclude("**")
                 .build();}
     @Bean
-    public GroupedOpenApi portefeuilleApi() {
+    public GroupedOpenApi AdminApi() {
         return GroupedOpenApi.builder()
-                .group("Only portefeuille Management API")
-                .pathsToMatch("/portefeuille/**")
+                .group("Only Admin Management API")
+                .pathsToMatch("/api/v1/admin/**")
                 .pathsToExclude("**")
                 .build();
     }
     @Bean
-    public GroupedOpenApi CreditcardApi() {
+    public GroupedOpenApi AutenticationAPI() {
         return GroupedOpenApi.builder()
-                .group("Only creditcard Management API")
-                .pathsToMatch("/creditcard/**")
+                .group("Only Authentication Management API")
+                .pathsToMatch("/api/v1/auth/**")
                 .pathsToExclude("**")
                 .build();
     }

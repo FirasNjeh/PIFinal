@@ -1,9 +1,11 @@
-package esprit.pi.demo.Services;
-import esprit.pi.demo.dto.AgricoleAssuranceDTO;
-import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.dto.SanteAssuranceDTO;
-import esprit.pi.demo.dto.ScolaireAssuranceDTO;
-import esprit.pi.demo.entities.*;
+package esprit.pi.demo.Services.Maryem;
+import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
+import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
+
+import esprit.pi.demo.entities.Enumeration.*;
+import esprit.pi.demo.entities.Maryem.Assurance;
 
 import java.util.List;
 import java.util.Set;
@@ -17,17 +19,17 @@ public interface IAssurance {
     void deleteAssurance(int id);
 
     // @Override
- //role : adminn+agent
- //    public Assurance updateAssurance(int id , Assurance assurance ){
- //        Assurance existingAssurance=repository.findById(assurance.getId()).orElse(null);
- //        existingAssurance.setDate_payement(assurance.getDate_payement());
- //        existingAssurance.setDate_remboursement(assurance.getDate_remboursement());
- //        existingAssurance.setMontant_prime(assurance.getMontant_prime());
- //        existingAssurance.setRemboursement(assurance.getRemboursement());
- //        return repository.save(existingAssurance);
- //
- //
- //    }
+    //role : adminn+agent
+    //    public Assurance updateAssurance(int id , Assurance assurance ){
+    //        Assurance existingAssurance=repository.findById(assurance.getId()).orElse(null);
+    //        existingAssurance.setDate_payement(assurance.getDate_payement());
+    //        existingAssurance.setDate_remboursement(assurance.getDate_remboursement());
+    //        existingAssurance.setMontant_prime(assurance.getMontant_prime());
+    //        existingAssurance.setRemboursement(assurance.getRemboursement());
+    //        return repository.save(existingAssurance);
+    //
+    //
+    //    }
     Set<Assurance> getListAssurancesByPackAssur(int idpack);
 
     Set<Assurance> getListAssurancesByUser(int iduser);

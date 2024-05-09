@@ -1,5 +1,8 @@
-package esprit.pi.demo.entities;
+package esprit.pi.demo.entities.Maryem;
 
+import esprit.pi.demo.entities.Enumeration.TypeTransaction;
+import esprit.pi.demo.entities.Enumeration.TypeTransaction1;
+import esprit.pi.demo.entities.Firas.Portefeuille;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,15 +19,15 @@ public class TransactionAssurance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-  private LocalDate date;
-  private Long rib_source;
-  private Long rib_destination;
-  private float montant;
-  @Enumerated(EnumType.STRING)
-  private TypeTransaction typeTransaction;
-  @Enumerated(EnumType.STRING)
-  private TypeTransaction1 typeTransaction1;
-  @ToString.Exclude
-  @ManyToOne
-  private Portefeuille portefeuilleTransactionA;
+    private LocalDate date;
+    private Long rib_source;
+    private Long rib_destination;
+    private float montant;
+    @Enumerated(EnumType.STRING)
+    private TypeTransaction typeTransaction;
+    @Enumerated(EnumType.STRING)
+    private TypeTransaction1 typeTransaction1;
+    @ToString.Exclude
+    @ManyToOne
+    private Portefeuille portefeuilleTransactionA;
 }
