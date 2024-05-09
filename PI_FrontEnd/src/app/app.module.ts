@@ -33,6 +33,28 @@ import { DatePipe } from '@angular/common';
 import { SimulateursComponent } from './FrontOffice/simulateurs/simulateurs.component';
 import { TableAmortissementComponent } from './FrontOffice/table-amortissement/table-amortissement.component';
 import { CurrencyComponent } from './FrontOffice/currency/currency.component';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './PagesAuthentification/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GestionUserComponent } from './BackOffice/gestion-user/gestion-user.component';
+import { RegisterComponent } from './PagesAuthentification/register/register.component';
+import { HttpErrorInterceptor } from './Helper/interceptors/http-error.interceptor';
+import { UserDetailsComponent } from './BackOffice/user-details/user-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserStatComponent } from './BackOffice/user-stat/user-stat.component';
+import { ProfilBackComponent } from './BackOffice/profil-back/profil-back.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { ForgotPasswordComponent } from './PagesAuthentification/forgot-password/forgot-password.component';
+import { SetPasswordComponent } from './PagesAuthentification/set-password/set-password.component';
+
+
+
+
+
+
+
 
 
 
@@ -65,6 +87,16 @@ import { CurrencyComponent } from './FrontOffice/currency/currency.component';
     SimulateursComponent,
     TableAmortissementComponent,
     CurrencyComponent,
+    LoginComponent,
+    NotFoundComponent,
+    GestionUserComponent,
+    RegisterComponent,
+    UserDetailsComponent,
+    UserStatComponent,
+    ProfilBackComponent,
+    ForgotPasswordComponent,
+    SetPasswordComponent,
+   
     
     
   ],
@@ -78,6 +110,22 @@ import { CurrencyComponent } from './FrontOffice/currency/currency.component';
     
   ],
   providers: [DatePipe ],
+    CalendarModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule
+    
+    
+    
+    
+    
+    
+  ],
+  providers: [
+    HttpClient,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true } ,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,5 +28,6 @@ public class RegisterRequest {
     private float salaire;
     private int age;
     private boolean banni;
+    private boolean mfEnabled;
 
 }

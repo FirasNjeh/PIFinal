@@ -1,0 +1,32 @@
+<main id="main" class="main">
+  <div class="card">
+    <div class="card-body" *ngIf="user1 | async as user">
+      <h1 class="card-title">Détails de l'utilisateur {{ user.id }}</h1>
+
+      <!-- Utilisation de la grille Bootstrap pour afficher le nom et le prénom sur la même ligne -->
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="list-group">
+            <li class="list-group-item"><b>Id:</b> {{ user.id }}</li>
+            <li class="list-group-item"><b>Nom et Prénom:</b> {{ user.nom }} {{ user.prenom }}</li>
+            <li class="list-group-item"><b>Genre:</b> {{ user.genre }}</li>
+            <li class="list-group-item"><b>CIN:</b> {{ user.cin }}</li>
+            <li class="list-group-item"><b>Date de naissance:</b> {{ user.dateNaissance }}</li>
+            <li class="list-group-item"><b>Age:</b> {{ user.age }}</li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="list-group">
+            <li class="list-group-item"><b>Adresse mail:</b> {{ user.email }}</li>
+            <li class="list-group-item"><b>Numéro de téléphone:</b> {{ user.numtel }}</li>
+            <li class="list-group-item"><b>Adresse:</b> {{ user.adresse }}</li>
+            <li class="list-group-item"><b>Profession:</b> {{ user.profession }}</li>
+            <li class="list-group-item"><b>Salaire:</b> {{ user.salaire }}</li>
+            <li class="list-group-item"><b>Role:</b> {{ user.role }}</li>
+            <li class="list-group-item"><b>Status Profil:</b> {{ user.banni === false ? 'ACTIF': (user.banni === true ? ' BANNI' : user.banni) }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

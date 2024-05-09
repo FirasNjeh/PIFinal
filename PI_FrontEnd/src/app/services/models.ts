@@ -1,0 +1,29 @@
+/* tslint:disable */
+/* eslint-disable */
+export { AcheteurFactoring } from './models/acheteur-factoring';
+export { AgeGroupStatisticsDto } from './models/age-group-statistics-dto';
+export { Assurance } from './models/assurance';
+export { AuthenticationRequest } from './models/authentication-request';
+export { AuthenticationResponse } from './models/authentication-response';
+export { ChangePasswordRequest } from './models/change-password-request';
+export { ContratFactoring } from './models/contrat-factoring';
+export { Credit } from './models/credit';
+export { CreditCard } from './models/credit-card';
+export { Garant } from './models/garant';
+export { GenderStatisticsDto } from './models/gender-statistics-dto';
+export { GrantedAuthority } from './models/granted-authority';
+export { NewsBaha } from './models/news-baha';
+export { PackAssur } from './models/pack-assur';
+export { PackCr } from './models/pack-cr';
+export { Portefeuille } from './models/portefeuille';
+export { Question } from './models/question';
+export { Reclamation } from './models/reclamation';
+export { RegisterRequest } from './models/register-request';
+export { ReponseQ } from './models/reponse-q';
+export { ReponseRc } from './models/reponse-rc';
+export { Salon } from './models/salon';
+export { Sinistre } from './models/sinistre';
+export { Token } from './models/token';
+export { TransactionCredit } from './models/transaction-credit';
+export { UpdateUserRequest } from './models/update-user-request';
+export { User } from './models/user';

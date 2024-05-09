@@ -13,7 +13,7 @@ public interface IServiceUser {
     User creer(User user);
     List<User> lire();
     User getUserById (int id);
-    String supprimer(int id);
+    void supprimer(int id);
     User modifier(int id, User user);
     List <User> trierUtilisateurParNom();
     List <User> trierUtilisateurParPrenom();
@@ -36,6 +36,8 @@ public interface IServiceUser {
 
     User getCurrentUser(Principal connectedUser) ;
     void updateCurrentUser(Principal connectedUser, UpdateUserRequest updatedUser);
+    int nbreTotalUtilisateurs();
+    double calculerSalaireMoyen();
 
 
 }

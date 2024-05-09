@@ -1,0 +1,70 @@
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8d7da; /* Couleur de fond par défaut pour les messages d'erreur */
+    border: 2px solid #dc3545; /* Bordure par défaut pour les messages d'erreur */
+    padding: 20px;
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    color: #721c24; /* Couleur du texte par défaut pour les messages d'erreur */
+    max-width: 300px; /* Largeur maximale */
+    text-align: center; /* Centrage du texte */
+    z-index: 999; /* Assure que la fenêtre est au-dessus de tous les autres éléments */
+  }
+  
+  .message-box.success {
+    background-color: #d4edda; /* Couleur de fond pour les messages de succès */
+    border-color: #28a745; /* Bordure pour les messages de succès */
+    color: #155724; /* Couleur du texte pour les messages de succès */
+  }
+  
+  .message-box.error {
+    background-color: #f8d7da; /* Couleur de fond pour les messages d'erreur */
+    border-color: #dc3545; /* Bordure pour les messages d'erreur */
+    color: #721c24; /* Couleur du texte pour les messages d'erreur */
+  }
+  
+  .hidden {
+    display: none;
+  }
+  .pagination {
+    display: flex;
+    align-items: center;
+  }
+  
+  .page-number {
+    margin: 0 10px; /* Ajoute un espace entre le numéro de page et les boutons */
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-container input[type="text"] {
+    padding: 8px; /* Ajustez la taille du padding selon vos préférences */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px; /* Ajustez la taille de la police selon vos préférences */
+  }
+  
+  .search-container button {
+    padding: 8px 16px; /* Ajustez la taille du padding selon vos préférences */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px; /* Ajustez la taille de la police selon vos préférences */
+  }
+  
+  .search-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  

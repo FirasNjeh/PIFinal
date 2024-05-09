@@ -1,0 +1,2088 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/user/update": {
+            "put": {
+                "tags": [
+                    "user-controller"
+                ],
+                "operationId": "updateCurrent",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/portefeuille/update/{id}": {
+            "put": {
+                "tags": [
+                    "portefeuille-controller"
+                ],
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Portefeuille"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Portefeuille"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/creditcard/update/{id}": {
+            "put": {
+                "tags": [
+                    "credit-card-controller"
+                ],
+                "operationId": "update_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreditCard"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditCard"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/update/{id}": {
+            "put": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "update_2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/portefeuille/create": {
+            "post": {
+                "tags": [
+                    "portefeuille-controller"
+                ],
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Portefeuille"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Portefeuille"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/creditcard/create": {
+            "post": {
+                "tags": [
+                    "credit-card-controller"
+                ],
+                "operationId": "create_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreditCard"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditCard"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthenticationResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/refresh-token": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "refreshToken",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/authenticate": {
+            "post": {
+                "tags": [
+                    "authentication-controller"
+                ],
+                "operationId": "authenticate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthenticationRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthenticationResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/deban/{userId}": {
+            "post": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "debanUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/create": {
+            "post": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "create_2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/ban/{userId}": {
+            "post": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "banUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/changepassword": {
+            "patch": {
+                "tags": [
+                    "user-controller"
+                ],
+                "operationId": "changePassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePasswordRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/id/{id}": {
+            "get": {
+                "tags": [
+                    "user-controller"
+                ],
+                "operationId": "findUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/portefeuille/{id}": {
+            "get": {
+                "tags": [
+                    "portefeuille-controller"
+                ],
+                "operationId": "findById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Portefeuille"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/portefeuille/all": {
+            "get": {
+                "tags": [
+                    "portefeuille-controller"
+                ],
+                "operationId": "read",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Portefeuille"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/creditcard/{id}": {
+            "get": {
+                "tags": [
+                    "credit-card-controller"
+                ],
+                "operationId": "findById_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditCard"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/creditcard/all": {
+            "get": {
+                "tags": [
+                    "credit-card-controller"
+                ],
+                "operationId": "read_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CreditCard"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/demo-controller": {
+            "get": {
+                "tags": [
+                    "demo-controller"
+                ],
+                "operationId": "sayHello",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/stattrancheage": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "obtenirStatistiquesTranchesAge",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AgeGroupStatisticsDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/statgenre": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "obtenirStatistiquesGenre",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GenderStatisticsDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbysurname": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParPrenom",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbysalairedecroissant": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParSalaireDecroissant",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbysalairecroissant": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParSalaireCroissant",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbyrole": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParRole",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbyname": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParNom",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/sortbyage": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "trierUtilisateurParAge",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/prenom/{prenom}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findByPrenom",
+                "parameters": [
+                    {
+                        "name": "prenom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/nom/{nom}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findByNom",
+                "parameters": [
+                    {
+                        "name": "nom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/nom/{nom}/prenom/{prenom}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findByPrenomAndNom",
+                "parameters": [
+                    {
+                        "name": "prenom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/matfiscale/{matriculeFiscale}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findByMatricule_fiscale",
+                "parameters": [
+                    {
+                        "name": "matriculeFiscale",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/id/{id}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findUserById_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/cin/{cin}": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "findByCinLike",
+                "parameters": [
+                    {
+                        "name": "cin",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/all": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "read_2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/agemoyen": {
+            "get": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "calculerAgeMoyenUsers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "number",
+                                    "format": "double"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/portefeuille/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "portefeuille-controller"
+                ],
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/creditcard/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "credit-card-controller"
+                ],
+                "operationId": "delete_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/admin/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "admin-controller"
+                ],
+                "operationId": "delete_2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UpdateUserRequest": {
+                "type": "object",
+                "properties": {
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "cin": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dateNaissance": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "numtel": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    },
+                    "profession": {
+                        "type": "string"
+                    },
+                    "salaire": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "AcheteurFactoring": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mat_fiscale": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    },
+                    "mail": {
+                        "type": "string"
+                    },
+                    "numTel": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "Assurance": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "date_payement": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "montant_prime": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "packAssurance": {
+                        "type": "string",
+                        "enum": [
+                            "AGRICOLE",
+                            "SANTE",
+                            "ENTREPRENEUR",
+                            "PERTE_EMPLOI",
+                            "VIE"
+                        ]
+                    },
+                    "franchise": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "remboursement": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "date_remboursement": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "sinistres": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Sinistre"
+                        }
+                    },
+                    "packAssur": {
+                        "$ref": "#/components/schemas/PackAssur"
+                    },
+                    "userAssurance": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "Contrat_Factoring": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "ref": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "adherant": {
+                        "type": "string"
+                    },
+                    "taux_avance": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "plafond": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "solvabilite": {
+                        "type": "string",
+                        "enum": [
+                            "SOLVABLE",
+                            "NON_SOLVABLE",
+                            "NE_SAIS_PAS"
+                        ]
+                    },
+                    "delaiPaiement": {
+                        "type": "string",
+                        "enum": [
+                            "COURT",
+                            "LONG",
+                            "VARIABLE"
+                        ]
+                    },
+                    "historique": {
+                        "type": "string",
+                        "enum": [
+                            "FIABLE",
+                            "VARIABLE",
+                            "DOUTEUX"
+                        ]
+                    },
+                    "taux_comm": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "acheteurFactorings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AcheteurFactoring"
+                        }
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "Credit": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "montant": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "dateDeb": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "dateFin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "paiementMensuel": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "packCredit": {
+                        "type": "string",
+                        "enum": [
+                            "ENTREPREUNARIAT",
+                            "AGRICULTURE",
+                            "ELEVAGE",
+                            "EDUCATION",
+                            "URGENCE_FINANCIERE",
+                            "FORMATION",
+                            "PROFESSIONNEL"
+                        ]
+                    },
+                    "tauxInteret": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "duree": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "statusCredit": {
+                        "type": "string",
+                        "enum": [
+                            "EN_ATTENTE",
+                            "APPROUVE",
+                            "REFUSE"
+                        ]
+                    },
+                    "realtionGarant": {
+                        "type": "string",
+                        "enum": [
+                            "PARENT",
+                            "AMI",
+                            "CONJOINT"
+                        ]
+                    },
+                    "packCR": {
+                        "$ref": "#/components/schemas/PackCR"
+                    },
+                    "userCR": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "garant": {
+                        "$ref": "#/components/schemas/Garant"
+                    }
+                }
+            },
+            "CreditCard": {
+                "type": "object",
+                "properties": {
+                    "id_number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "date_valide": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "cvv": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "num_card": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "portefeuilleCreditCard": {
+                        "$ref": "#/components/schemas/Portefeuille"
+                    }
+                }
+            },
+            "Garant": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nomGarant": {
+                        "type": "string"
+                    },
+                    "prenomGarant": {
+                        "type": "string"
+                    },
+                    "salaire_garant": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "cin": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "GrantedAuthority": {
+                "type": "object",
+                "properties": {
+                    "authority": {
+                        "type": "string"
+                    }
+                }
+            },
+            "NewsBaha": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "titre": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "categorie": {
+                        "type": "string",
+                        "enum": [
+                            "PROMOTION",
+                            "TENDANCE_ET_ACTUALITE"
+                        ]
+                    },
+                    "dateCreation": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "nbr_like": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nbr_dislike": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userNews": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PackAssur": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "prime": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "packAssurance": {
+                        "type": "string",
+                        "enum": [
+                            "AGRICOLE",
+                            "SANTE",
+                            "ENTREPRENEUR",
+                            "PERTE_EMPLOI",
+                            "VIE"
+                        ]
+                    }
+                }
+            },
+            "PackCR": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "montantMin": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "montantMax": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "packCredit": {
+                        "type": "string",
+                        "enum": [
+                            "ENTREPREUNARIAT",
+                            "AGRICULTURE",
+                            "ELEVAGE",
+                            "EDUCATION",
+                            "URGENCE_FINANCIERE",
+                            "FORMATION",
+                            "PROFESSIONNEL"
+                        ]
+                    }
+                }
+            },
+            "Portefeuille": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "montant": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "date_creation": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "rib": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "statuspf": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "INACTIVE",
+                            "BLOQUER"
+                        ]
+                    },
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionCredit"
+                        }
+                    },
+                    "creditCards": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CreditCard"
+                        }
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "Question": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "theme": {
+                        "type": "string"
+                    },
+                    "auteur": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "prioriteQ": {
+                        "type": "string",
+                        "enum": [
+                            "URGENT",
+                            "NON_URGENT"
+                        ]
+                    },
+                    "statusQ": {
+                        "type": "string",
+                        "enum": [
+                            "RESOLU",
+                            "NON_RESOLU"
+                        ]
+                    },
+                    "reponseQS": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ReponseQ"
+                        }
+                    },
+                    "salonQ": {
+                        "$ref": "#/components/schemas/Salon"
+                    }
+                }
+            },
+            "Reclamation": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "objet": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "statusRC": {
+                        "type": "string",
+                        "enum": [
+                            "TRAITEE",
+                            "EN_ATTENTE"
+                        ]
+                    },
+                    "dateRC": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "priorityLevel": {
+                        "type": "string",
+                        "enum": [
+                            "LOW",
+                            "HIGH",
+                            "MEDIUM",
+                            "URGENT"
+                        ]
+                    },
+                    "typeRC": {
+                        "type": "string",
+                        "enum": [
+                            "NEW",
+                            "IN_PROGRESS",
+                            "RESOLVED",
+                            "CLOSED"
+                        ]
+                    },
+                    "userReclamation": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "reponseRC": {
+                        "$ref": "#/components/schemas/ReponseRC"
+                    }
+                }
+            },
+            "ReponseQ": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "string"
+                    },
+                    "auteur": {
+                        "type": "string"
+                    },
+                    "question": {
+                        "$ref": "#/components/schemas/Question"
+                    }
+                }
+            },
+            "ReponseRC": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "date_rep": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "reclamation": {
+                        "$ref": "#/components/schemas/Reclamation"
+                    },
+                    "reponse": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Salon": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "status_salon": {
+                        "type": "string",
+                        "enum": [
+                            "OUVERT",
+                            "FERME",
+                            "COMPLET",
+                            "DISPONIBLE"
+                        ]
+                    },
+                    "theme": {
+                        "type": "string"
+                    },
+                    "date_creation": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "nbr_place": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "questions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Question"
+                        }
+                    }
+                }
+            },
+            "Sinistre": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dateSinistre": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "estimation_expert": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "lieu": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "assuranceSinistre": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Assurance"
+                        }
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "token": {
+                        "type": "string"
+                    },
+                    "tokenType": {
+                        "type": "string",
+                        "enum": [
+                            "BEARER"
+                        ]
+                    },
+                    "expired": {
+                        "type": "boolean"
+                    },
+                    "revoked": {
+                        "type": "boolean"
+                    },
+                    "userToken": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "TransactionCredit": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "rib_source": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rib_destination": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "montant": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "typeTransaction": {
+                        "type": "string",
+                        "enum": [
+                            "VIREMENT",
+                            "VERSEMENT"
+                        ]
+                    },
+                    "portefeuilleTransaction": {
+                        "$ref": "#/components/schemas/Portefeuille"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "cin": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dateNaissance": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numtel": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    },
+                    "mdp": {
+                        "type": "string"
+                    },
+                    "profession": {
+                        "type": "string"
+                    },
+                    "genre": {
+                        "type": "string",
+                        "enum": [
+                            "HOMME",
+                            "FEMME"
+                        ]
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN",
+                            "CLIENT"
+                        ]
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "salaire": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "matriculeFiscale": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "banni": {
+                        "type": "boolean"
+                    },
+                    "contratFactorings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Contrat_Factoring"
+                        }
+                    },
+                    "portefeuilleUser": {
+                        "$ref": "#/components/schemas/Portefeuille"
+                    },
+                    "newsBaha": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewsBaha"
+                        }
+                    },
+                    "assurances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Assurance"
+                        }
+                    },
+                    "credits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Credit"
+                        }
+                    },
+                    "reclamations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Reclamation"
+                        }
+                    },
+                    "salons": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Salon"
+                        }
+                    },
+                    "tokens": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Token"
+                        }
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "authorities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GrantedAuthority"
+                        }
+                    },
+                    "credentialsNonExpired": {
+                        "type": "boolean"
+                    },
+                    "accountNonExpired": {
+                        "type": "boolean"
+                    },
+                    "accountNonLocked": {
+                        "type": "boolean"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "RegisterRequest": {
+                "type": "object",
+                "properties": {
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "mdp": {
+                        "type": "string"
+                    },
+                    "cin": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "dateNaissance": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN",
+                            "CLIENT"
+                        ]
+                    },
+                    "numtel": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    },
+                    "profession": {
+                        "type": "string"
+                    },
+                    "genre": {
+                        "type": "string",
+                        "enum": [
+                            "HOMME",
+                            "FEMME"
+                        ]
+                    },
+                    "salaire": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "banni": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "AuthenticationResponse": {
+                "type": "object",
+                "properties": {
+                    "access_token": {
+                        "type": "string"
+                    },
+                    "refresh_token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthenticationRequest": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "mdp": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ChangePasswordRequest": {
+                "type": "object",
+                "properties": {
+                    "currentPassword": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    },
+                    "confirmationPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AgeGroupStatisticsDTO": {
+                "type": "object",
+                "properties": {
+                    "pourcentageJeunesAdultes": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pourcentageAdultes": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pourcentageAinesTroisiemeAge": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pourcentageAinesQuatriemeAge": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            },
+            "GenderStatisticsDTO": {
+                "type": "object",
+                "properties": {
+                    "pourcentageHommes": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pourcentageFemmes": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,10 @@ User findByMatriculeFiscale(int matriculeFiscale);
 @Query("select avg (u.age) from User u")
     double calculerAgeMoyen();
 Optional<User> findByEmail (String Email);
+@Query("select count (*) from User")
+    int nbreTotalUtilisateurs();
+    @Query("select avg (u.salaire) from User u")
+    double calculerSalaireMoyen();
 
 
 }
