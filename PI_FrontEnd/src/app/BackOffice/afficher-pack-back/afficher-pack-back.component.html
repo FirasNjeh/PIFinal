@@ -37,7 +37,7 @@
                       <td>{{ p.montantMin }}</td>
                       <td>{{ p.montantMax }}</td>
                       <td>{{ p.packCredit }}</td>
-                      <td>{{p.image}}</td>
+                      <!-- <img [src]="'data:' + p.image[0]?.type + ';base64,' + p.image[0]?.data" alt="Packimage" width="100" height="100"> -->
                       <td><i class="bx bxs-trash" (click)="deletePost(p.id)"></i></td>
                       <td>
                         <i class="bx bxs-edit-alt"(click)="openUpdatePackModal(updatePackModal, p)"></i>
@@ -46,6 +46,23 @@
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
+
+                <div class="d-flex justify-content-between p-2">
+                  <ngb-pagination
+                    [collectionSize]="totalItems"
+                    [(page)]="currentPage"
+                    [pageSize]="pageSize"
+                    (pageChange)="getPacks()"
+                  ></ngb-pagination>
+          
+                  <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getPacks()">
+                    <option [ngValue]="2">2 items per page</option>
+                    <option [ngValue]="4">4 items per page</option>
+                    <option [ngValue]="6">6 items per page</option>
+                    <option [ngValue]="6">8 items per page</option>
+                    <option [ngValue]="6">10 items per page</option>
+                  </select>
+                </div>
   
               </div>
             </div>

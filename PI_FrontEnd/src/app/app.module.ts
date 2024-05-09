@@ -30,6 +30,9 @@ import { SimulateurCreditComponent } from './FrontOffice/simulateur-credit/simul
 import { SalaireComponent } from './FrontOffice/salaire/salaire.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { DatePipe } from '@angular/common';
+import { SimulateursComponent } from './FrontOffice/simulateurs/simulateurs.component';
+import { TableAmortissementComponent } from './FrontOffice/table-amortissement/table-amortissement.component';
+import { CurrencyComponent } from './FrontOffice/currency/currency.component';
 
 
 
@@ -59,6 +62,9 @@ import { DatePipe } from '@angular/common';
     LeCreditBackComponent,
     SimulateurCreditComponent,
     SalaireComponent,
+    SimulateursComponent,
+    TableAmortissementComponent,
+    CurrencyComponent,
     
     
   ],

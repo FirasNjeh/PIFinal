@@ -17,6 +17,13 @@ export class AfficherPackBackComponent {
 
   errorMessage: Object | undefined;
   updatePackForm!: FormGroup;
+  file!: FormData;
+  currentPage = 1;
+  pageSize = 10;
+  totalItems = 0;
+
+  pack:PackCR[]=[]
+
 
   
   constructor(private packcrf: PackCrBackService, private modalService: NgbModal, private formBuilder: FormBuilder){}
@@ -32,6 +39,22 @@ export class AfficherPackBackComponent {
         return throwError(err);
       })
     );
+
+    this.packcrf.afficherPackCR().subscribe(
+      (pack) => {
+        this.totalItems = pack.length;
+        this.pack = pack.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize);
+        console.log('All Packs fetched successfully:');
+      },
+      (error) => {
+        console.error('Error in fetching all Packs:', error);
+      }
+    );
+
+
+
+
+
   }
   deletePost(id:number): void {
     // Appel du service pour supprimer le credit avec l'identifiant spécifié
@@ -121,6 +144,29 @@ export class AfficherPackBackComponent {
             }
         );
     }
+}
+
+
+uploadFile(file: FormData, idpack: number) {
+  this.packcrf.uploadFile(file, idpack).subscribe(
+    (response) => {
+      console.log('File uploaded successfully!', response);
+    },
+    (error) => {
+      console.error('Error in uploading file:', error);
+    }
+  );
+}
+
+getListFiles(idpack: number) {
+  this.packcrf.getListFiles(idpack).subscribe(
+    (files: any[]) => {
+      console.log('Files fetched successfully!', files);
+    },
+    (error) => {
+      console.error('Error in fetching files:', error);
+    }
+  );
 }
 
 

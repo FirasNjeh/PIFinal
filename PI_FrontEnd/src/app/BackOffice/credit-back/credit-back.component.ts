@@ -15,6 +15,7 @@ export class CreditBackComponent {
   credit$: Observable<Credit[]> |undefined; 
   credits: Credit[] = [];
   selectedCredit!: any
+  searchText!:number;
 
 
 
@@ -57,6 +58,34 @@ export class CreditBackComponent {
       }, (reason) => {
       });
       this.selectedCredit = credit;
+    }
+
+    
+
+    rechercher(searchText: number): void {
+      console.log('Search text:', searchText);
+
+      if (this.searchText) {
+        this.creditService.FindByMontant(searchText).subscribe(
+          data => {
+            if (data.length > 0) {
+              this.credits = data;
+              console.log('yekhdem:', data);
+
+            } else {
+              this.errorMessage = "Aucun credit avec ce montant.";
+            }
+          },
+          error => {
+            console.error('Une erreur s\'est produite lors de la recherche : ', error);
+            this.errorMessage = "Une erreur s'est produite lors de la recherche.";
+          }
+        );
+      } else {
+        // Si la barre de recherche est vide, effacer la liste des utilisateurs et le message d'erreur
+        this.credits = [];
+        this.errorMessage = "test";
+      }
     }
 
    

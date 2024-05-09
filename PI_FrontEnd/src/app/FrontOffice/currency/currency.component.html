@@ -1,0 +1,22 @@
+
+
+<div class="container">
+    <div class="brand-logo">
+        <img src="/assets/FrontOffice/img/logo.png" alt="codeQR" class="img-fluid">
+
+        
+    </div>
+    <div class="brand-title text-center">Converter</div>
+    <div class="inputs">
+      <input type="text" name="montant" placeholder="Convert To"[(ngModel)]="convertTo" />
+      <hr>
+      <input type="number" name="duree" placeholder="Amount" [(ngModel)]="quantity"/>
+      <hr>
+      <button (click)=" currency()" >Convert Currency</button>
+    </div>
+    <hr>
+    <div class=" text-center"*ngIf="resultats">
+        <p> {{ resultats }} TND</p>
+    </div>
+
+</div>

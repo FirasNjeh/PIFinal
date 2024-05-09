@@ -38,4 +38,11 @@ export class PackCrBackService {
   updatePack(id: number, pack: any): Observable<any> {
     return this.http.put<any>(`http://localhost:8081/user/PackCR/update/${id}`, pack);
   }
+  uploadFile(file: FormData, idpack: number): Observable<any> {
+    return this.http.post<any>(`http://localhost:8081/user/PackCR/${idpack}/uploadimage`, file);
+  }
+
+  getListFiles(idpack: number): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8081/user/PackCR/${idpack}/images`);
+  }
 }

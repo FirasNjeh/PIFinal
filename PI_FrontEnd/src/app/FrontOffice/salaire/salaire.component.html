@@ -1,10 +1,10 @@
 
-<body>
 <div class="container">
     <div class="brand-logo">
+      <img src="/assets/FrontOffice/img/logo.png" alt="codeQR" class="img-fluid">
         
     </div>
-    <div class="brand-title">Etes vous éligible pour prendre un crédit ?</div>
+    <div class="brand-title text-center">Crédit Max</div>
     <div class="inputs">
       <input type="number" name="Salaire" placeholder="Votre salaire Mensuel" [(ngModel)]="salaire"/>
       <hr>
@@ -13,9 +13,8 @@
       <button (click)=" Max()" >Votre Crédit Maximal est </button>
     </div>
     <hr>
-    <div *ngIf="resultats">
+    <div class=" text-center"*ngIf="resultats">
         <p>{{ resultats }}</p>
     </div>
 
 </div>
-</body>

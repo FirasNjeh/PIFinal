@@ -22,4 +22,8 @@ export class AdminService {
   public getAct(): Observable<Array<TransactionCredit>> {
     return this.http.get<Array<TransactionCredit>>('http://localhost:8081/user/TransactionCredit/all');
   }
+
+  getPackCreditCounts(): Observable<Map<any, any>> {
+    return this.http.get<Map<any, any>>('http://localhost:8081/user/PackCR/creditCounts');
+  }
 }

@@ -6,6 +6,10 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Les Crédits</h5>
+                <div class="search-container">
+                  <input type="number" placeholder="Rechercher par Montant" [(ngModel)]="searchText">
+                  <button (click)="rechercher(searchText)">Rechercher</button>
+                </div>
   
                 <!-- Table with stripped rows -->
                 <table class="table datatable" *ngIf="(credit$ | async) as credits">

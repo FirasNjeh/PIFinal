@@ -24,4 +24,11 @@ export class CreditBackService {
     return this.http.delete<Credit>('http://localhost:8081/user/Credit/delete/'+id);
 
   }
+
+  public FindByMontant(montant :number){
+    return this.http.get<Credit[]>(`http://localhost:8081/user/Credit/get/montant/${montant}`);
+  
+  }
+
+ 
 }

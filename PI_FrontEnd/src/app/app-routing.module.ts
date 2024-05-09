@@ -17,6 +17,8 @@ import { AdminComponent } from './BackOffice/admin/admin.component';
 import { LeCreditBackComponent } from './BackOffice/le-credit-back/le-credit-back.component';
 import { SimulateurCreditComponent } from './FrontOffice/simulateur-credit/simulateur-credit.component';
 import { SalaireComponent } from './FrontOffice/salaire/salaire.component';
+import { SimulateursComponent } from './FrontOffice/simulateurs/simulateurs.component';
+import { TableAmortissementComponent } from './FrontOffice/table-amortissement/table-amortissement.component';
 
 const routes: Routes = [
 
@@ -28,6 +30,15 @@ const routes: Routes = [
         path:"home",
         component:HomeFrontComponent
       },
+      {
+        path:"Simulateurs",
+        component:SimulateursComponent
+      },
+      {
+        path:"TableauAmortissement/:id",
+        component:TableAmortissementComponent
+      },
+     
       {
         path:"PackCredit",
         component:PackCRFrontComponent
@@ -57,6 +68,9 @@ const routes: Routes = [
         component:LeCreditFrontComponent
       }
     ]
+  }, {
+    path:"MonthlyPayment/:id",
+    component:MonthlyPaymentFrontComponent
   },
   
   {

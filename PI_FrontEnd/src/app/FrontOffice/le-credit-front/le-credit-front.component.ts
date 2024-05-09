@@ -86,7 +86,7 @@ export class LeCreditFrontComponent {
         // Optionally, you can navigate or perform any other action upon success
       },
       (error) => {
-        console.error('Failed to add monthly payment:', error);
+        console.error('Failed to add monthly paymentttt:', error);
         // Optionally, you can show an error message or perform any other action upon error
       }
     );
@@ -105,6 +105,13 @@ export class LeCreditFrontComponent {
     return this.datePipe.transform(currentDate, 'yyyy-MM-dd') || '';
   }
   
+
+  redirectToDetails(cr:Credit): void{
+    const idc:number = cr.id;
+    console.log('l id du pack récupéré est : ' + idc);
+    //la redirection vers la page du pack
+    this.router.navigate(['TableauAmortissement/',idc]);
+  }
 
 
 

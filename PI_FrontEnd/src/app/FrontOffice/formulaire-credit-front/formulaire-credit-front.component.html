@@ -50,9 +50,13 @@
                                 </select>
                             </div>
                             
-                            <div class="col-12">
-                                <button class="btn btn-dark w-100 py-3" >Confirmer Votre Crédit</button>
+                            <div class="col-12" >
+                                <button class="btn btn-dark w-100 py-3" 
+                                        (click)="openConfirmeModal(ConfirmeModal)">
+                                    Confirmer Votre Crédit
+                                </button>
                             </div>
+                            
                         </div>
                     </form>
                 </div>
@@ -62,4 +66,19 @@
             </div>
         </div>
     </div>
+    <ng-template #ConfirmeModal let-modal>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-basic-title">Demande de crédit ajouté avec succés</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <p> Votre demande de crédit est en cours de traitement. Veuillez consulter votre boite mail pour plus de détails</p>
+            <button class="btn btn-dark w-100 py-3" routerLink="/home" (click)="modal.dismiss('Cross click')">OK</button>
+        </div>
+      </div>
+    </ng-template>  
+
+   
 </div>
+

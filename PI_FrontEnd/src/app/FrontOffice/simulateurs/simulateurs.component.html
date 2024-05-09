@@ -1,0 +1,34 @@
+<main>
+    <!-- titre -->
+    <div class="container-fluid bg-primary py-6 bg-header" style="margin-bottom: 60px;">
+        <div class="row py-5">
+            <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-4 text-white animated zoomIn">Nos Simulateurs Crédits</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <app-simulateur-credit></app-simulateur-credit>
+            </div>
+            <div class="col-md-4">
+                <app-salaire></app-salaire>
+            </div>
+            <div class="col-md-4">
+                <app-currency></app-currency>
+            </div>
+        </div>
+        <hr>
+
+
+
+        <!-- Centrer le bouton -->
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 text-center">
+                <a [routerLink]="['/PackCredit']" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInUp">Obtenez un crédit</a>
+            </div>
+        </div>
+    </div>
+</main>

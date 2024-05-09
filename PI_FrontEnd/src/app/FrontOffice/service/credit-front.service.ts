@@ -54,9 +54,17 @@ export class CreditFrontService {
   }
 
   addMonthlyPayment(id: number, monthlyPayment: MonthlyPayment, montant: number): Observable<any> {
-    return this.http.post<any>(`http://localhost:8081/user/MonthlyPayment/ajouter/${id}/${montant}`, monthlyPayment);
+    return this.http.post<any>('http://localhost:8081/user/MonthlyPayment/ajouter/'+id+'/'+montant, monthlyPayment);
+  }
+  
+
+  Calcul_tableau_amo(id:number):Observable<any>{
+    return this.http.get<number[][]>('http://localhost:8081/user/Credit/tableau_credit/'+id)
   }
 
+  currency(quantity: number, convertTo: string): Observable<any> {
+    return this.http.get<any>('http://localhost:8081/user/Credit/currency/'+convertTo+'/'+quantity);
+  }
 
   
 }

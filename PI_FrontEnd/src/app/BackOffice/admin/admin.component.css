@@ -98,6 +98,17 @@
     cursor: default;
 }
 
+#chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.recent-sales { height: 420px;}
+
+
+
+
 
   
 
