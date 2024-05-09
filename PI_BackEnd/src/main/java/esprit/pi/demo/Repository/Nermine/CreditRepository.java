@@ -19,6 +19,8 @@ public interface CreditRepository extends JpaRepository<Credit,Integer>
     List<Credit> getCreditByMontantGreaterThan(float m);
     int countByStatusCreditEquals(StatusCredit statusCredit);
     int countByPackCredit(PackCredit packCredit);
+    List<Credit> findByUserCRId(int id);
+
 
 //    @Query(value = "SELECT * FROM credit c WHERE YEAR(c.date_deb) =?1",nativeQuery = true)
 //    List<Credit> creditParAnnee(int annnee);

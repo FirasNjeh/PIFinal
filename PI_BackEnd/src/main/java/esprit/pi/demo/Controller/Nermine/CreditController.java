@@ -175,5 +175,26 @@ public class CreditController {
     public double calculateDefaultRate() {
         return service.calculateDefaultRate();
     }
+
+    @GetMapping("/Stat/Nbr/User/{id}")
+    public int getNbrCrUser(@PathVariable int id) {
+        return service.getNbrCrUser(id);
+    }
+
+    @GetMapping("/Stat/NbrR/User/{id}")
+    public int getNbrCloUser(@PathVariable int id) {
+        return service.getNbrCloUser(id);
+    }
+
+    @GetMapping("/Max/{nbmois}/{salaire}")
+
+    public double MaxCredit1(@PathVariable int nbmois,@PathVariable float salaire) {
+        return service.MaxCredit1(nbmois, salaire);
+    }
+    @GetMapping("/get/Credits/{id}")
+    public List<Credit> getCreditUser(@PathVariable int id) {
+        return service.getCreditUser(id);
+    }
+
 }
 

@@ -74,6 +74,15 @@ public interface ICreditService {
 
     double calculateDefaultRate();
 
+    int getNbrCrUser(int id);
+
+    //fait
+    int getNbrCloUser(int id);
+
+    double MaxCredit1(int nbmois, float salaire);
+
+    List<Credit> getCreditUser(int id);
+
 
 //    double CalculActifCredit();
 //

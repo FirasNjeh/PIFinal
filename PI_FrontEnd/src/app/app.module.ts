@@ -33,9 +33,8 @@ import { DatePipe } from '@angular/common';
 import { SimulateursComponent } from './FrontOffice/simulateurs/simulateurs.component';
 import { TableAmortissementComponent } from './FrontOffice/table-amortissement/table-amortissement.component';
 import { CurrencyComponent } from './FrontOffice/currency/currency.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import { LoginComponent } from './PagesAuthentification/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GestionUserComponent } from './BackOffice/gestion-user/gestion-user.component';
@@ -48,6 +47,7 @@ import { ProfilBackComponent } from './BackOffice/profil-back/profil-back.compon
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { ForgotPasswordComponent } from './PagesAuthentification/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './PagesAuthentification/set-password/set-password.component';
+import { ProfileFrontComponent } from './FrontOffice/profile-front/profile-front.component';
 
 
 
@@ -96,6 +96,7 @@ import { SetPasswordComponent } from './PagesAuthentification/set-password/set-p
     ProfilBackComponent,
     ForgotPasswordComponent,
     SetPasswordComponent,
+    ProfileFrontComponent,
    
     
     
@@ -107,22 +108,23 @@ import { SetPasswordComponent } from './PagesAuthentification/set-password/set-p
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-    
+    CalendarModule,BrowserAnimationsModule,    ReactiveFormsModule,    NgxCaptchaModule,    NgbModule,
+
+
+
   ],
-  providers: [DatePipe ],
-    CalendarModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    NgxCaptchaModule
+ // providers: [DatePipe ],
     
     
     
     
     
     
-  ],
+    
+    
+  
   providers: [
-    HttpClient,
+    HttpClient,DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true } ,
 
   ],

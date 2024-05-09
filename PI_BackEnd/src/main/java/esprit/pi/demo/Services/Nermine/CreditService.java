@@ -273,7 +273,7 @@ return credit;
     public float calculRemboursementAnnuite(int id) {
         double A;
         Credit c = repository.findById(id).orElse(null);
-        A = (c.getMontant() * (c.getTauxInteret() / 100)) / (1 - Math.pow(1 + (c.getTauxInteret() / 100), (-c.getDuree())));
+        A = (c.getMontant() * (0.23 / 100)) / (1 - Math.pow(1 + (0.23 / 100), (-c.getDuree())));
         c.setAnnuite((float) A);
         return (float)A;
 
@@ -284,7 +284,7 @@ return credit;
         Credit c=getCreditById(id);
         User user=c.getUserCR();
         int nbmois=c.getDuree()*12;
-        double taux =c.getTauxInteret();
+        double taux =0.23;
         double tauxMensuel = taux / 12;
         double MaxCredit=((user.getSalaire()*0.43)*(1 - Math.pow(1 + tauxMensuel, -nbmois))) / tauxMensuel; //0.43 ratio d'endettement entre 33% et 43%
         return MaxCredit;
@@ -446,7 +446,7 @@ return credit;
         float[][] matrice = new float[c.getDuree() * 12][4];
 
         matrice[0][0] = c.getMontant(); // montant
-        matrice[0][1] = (matrice[0][0] * c.getTauxInteret())/ 12; //montant d'interet mensuel
+        matrice[0][1] = (matrice[0][0] * (float)0.23)/ 12; //montant d'interet mensuel
         matrice[0][2] = matrice[0][0] / (c.getDuree() * 12); // montant a payer mensuellement
         amt = matrice[0][2];
 
@@ -455,7 +455,7 @@ return credit;
         for (int j = 1; j < c.getDuree() * 12; j++) //boucle sur tous les mois
         {
             matrice[j][0] = matrice[j - 1][0] - amt;//montant
-            matrice[j][1] = (matrice[j][0] * c.getTauxInteret()) / 12;//interet
+            matrice[j][1] = (matrice[j][0] * (float)0.23) / 12;//interet
             matrice[j][2] = matrice[0][0] / (c.getDuree() * 12);//amt
             matrice[j][3] = amt + matrice[j][1];//mensualite
 
@@ -614,7 +614,47 @@ return credit;
         } else {
             return (double) latePayments / totalCredits * 100;
         }
+
     }
+
+    @Override
+    public int getNbrCrUser(int id)
+    {
+        int nbr;
+        User user=repo.getById(id);
+        return  nbr=user.getNbr_credit();
+    }
+
+    //fait
+    @Override
+    public int getNbrCloUser(int id )
+    {
+        int nbr;
+        User user=repo.getById(id);
+        List<Credit> credits=user.getCredits();
+        int nombreCreditsClotures = 0;
+        for (Credit credit : credits) {
+            if (credit.getStatusCredit() == StatusCredit.CLOTURE) {
+                nombreCreditsClotures++;
+            }
+        }
+
+        return nombreCreditsClotures;
+    }
+
+    @Override
+    public double MaxCredit1(int nbmois,float salaire){
+        double taux =0.23;
+        double tauxMensuel = taux / 12;
+        double MaxCredit1=((salaire*0.43)*(1 - Math.pow(1 + tauxMensuel, -nbmois))) / tauxMensuel; //0.43 ratio d'endettement entre 33% et 43%
+        return MaxCredit1;
+    }
+
+    @Override
+    public List<Credit> getCreditUser(int id) {
+        return repository.findByUserCRId( id);
+    }
+
 
 
 

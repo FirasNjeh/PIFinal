@@ -19,7 +19,7 @@ export class CreditFrontService {
   }, idp: number, idg: number): Observable<number> {
     const RelationGarantString: string = newcredit.realtionGarant.toString();
     // Construct the URL with dynamic parameters using template literals
-    const url = `http://localhost:8081/user/Credit/add/${idp}/${idg}/3`;
+    const url = `http://localhost:8081/user/Credit/add/${idp}/${idg}/1`;
 
     return this.http.post<number>(url, newcredit);
   }

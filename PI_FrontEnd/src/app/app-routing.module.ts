@@ -29,6 +29,7 @@ import { UserStatComponent } from './BackOffice/user-stat/user-stat.component';
 import { ProfilBackComponent } from './BackOffice/profil-back/profil-back.component';
 import { ForgotPasswordComponent } from './PagesAuthentification/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './PagesAuthentification/set-password/set-password.component';
+import { ProfileFrontComponent } from './FrontOffice/profile-front/profile-front.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path:"home",
         component:HomeFrontComponent
+      },
+      {
+        path:"profilUser",
+        component:ProfileFrontComponent
       },
       {
         path:"Simulateurs",
@@ -87,11 +92,7 @@ const routes: Routes = [
     path:"admin",
     component:AllTemplateBackComponent,
     children:[
-      // {
-      //   path:"ajoutPack",
-      //   component:AjoutPackBackComponent
-      // },
-     
+    
       {
         path:"",
         component:AdminComponent
@@ -111,9 +112,7 @@ const routes: Routes = [
       {
         path:"Garants",
         component:GarantBackComponent
-      }]
-  },
-
+      },
       {
         path:"user/:id",
         component:UserDetailsComponent
@@ -130,9 +129,13 @@ const routes: Routes = [
         path:"profil",
         component:ProfilBackComponent,
       }
-      
-    ], //canActivate:[AuthGuard] //hedhi lezem na7cheha fi les liens kol
+    ]
   },
+
+      
+      
+     //canActivate:[AuthGuard] //hedhi lezem na7cheha fi les liens kol
+  
   {
     path:"login",
     component:LoginComponent
