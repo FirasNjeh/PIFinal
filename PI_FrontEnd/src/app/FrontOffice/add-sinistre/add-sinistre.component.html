@@ -1,0 +1,51 @@
+<body>
+
+<div class="container-fluid bg-primary py-6 bg-header" style="margin-bottom: 60px;"  >
+  <div class="row py-5" >
+    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+      <h1 class="display-4 text-white animated zoomIn"> Ajouter un sinistre  </h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-5  wow fadeInUp " data-wow-delay="0.1s"  style="padding-left:300px ;">
+  <div class="container py-10 px-5">
+    <div class="row g-5 px-3">
+      <div class="col-lg-9 px-5">
+        <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+
+          <form [formGroup]="sinistreForm" (ngSubmit)="onSubmit()">
+            <div class="row g-3 ">
+             
+              <div class="form-group col-xl-12">
+                <label for="remboursement">Remboursement souhaité:</label>
+                <input type="number" id="remboursement" formControlName="remboursement" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="lieu">Lieu sinistre :</label>
+                <input type="text" id="lieu" formControlName="lieu" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="description">Description:</label>
+                <textarea id="description" formControlName="description" class="form-control"></textarea>
+              </div>
+            </div>
+            <br/>
+            <div class="col-12">
+              <button type="submit" class="btn btn-dark w-100 py-3">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <button type="button" class="btn btn-lg btn-outline-primary rounded-pill" [routerLink]="['/sinistres', this.idAssur]">
+    <i class="bi bi-arrow-left-circle-fill me-2"></i>
+    Retour à la liste des sinistres
+  </button>
+</div>
+
+</body>

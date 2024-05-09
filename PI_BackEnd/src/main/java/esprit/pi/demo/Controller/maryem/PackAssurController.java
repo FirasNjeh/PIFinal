@@ -1,10 +1,12 @@
-package esprit.pi.demo.Controller.maryem;
+package esprit.pi.demo.Controller;
 
-import esprit.pi.demo.Services.Maryem.IFileService;
-import esprit.pi.demo.Services.Maryem.IPackAssurService;
-import esprit.pi.demo.DTO.Maryem.ResponseFile;
-import esprit.pi.demo.DTO.Maryem.ResponseMessage;
-import esprit.pi.demo.entities.Maryem.PackAssur;
+import esprit.pi.demo.Services.IFileService;
+import esprit.pi.demo.Services.IPackAssurService;
+import esprit.pi.demo.dto.ResponseFile;
+import esprit.pi.demo.dto.ResponseMessage;
+import esprit.pi.demo.entities.PackAssur;
+import esprit.pi.demo.entities.PackAssurance;
+import esprit.pi.demo.entities.PackCR;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/user/PackAssur")
 @AllArgsConstructor
@@ -45,9 +48,9 @@ public class PackAssurController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deletePackAssur(@PathVariable int id)
+    public void deletePackAssur(@PathVariable int id)
     {
-        return service.deletePackAssur(id);
+        service.deletePackAssur(id);
     }
 
     @PostMapping("/{idpack}/uploadimage")

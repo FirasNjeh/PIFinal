@@ -1,10 +1,9 @@
-package esprit.pi.demo.Services.Maryem;
-import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
-import esprit.pi.demo.entities.Enumeration.*;
-import esprit.pi.demo.entities.Maryem.Assurance;
+package esprit.pi.demo.Services;
+import esprit.pi.demo.dto.AgricoleAssuranceDTO;
+import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.dto.SanteAssuranceDTO;
+import esprit.pi.demo.dto.ScolaireAssuranceDTO;
+import esprit.pi.demo.entities.*;
 
 import java.util.List;
 import java.util.Set;
@@ -15,7 +14,7 @@ public interface IAssurance {
     Assurance saveAssurance(Assurance assurance);
     List<Assurance> getAssurance();
     Assurance getAssuranceById(int id);
-    String deleteAssurance(int id);
+    void deleteAssurance(int id);
 
     // @Override
  //role : adminn+agent
@@ -54,7 +53,7 @@ public interface IAssurance {
     float CalculScolairePrime(float capitalescolaire_assuré);
 
 
-    float CalculENTREPRENEURPrime(TypeAssuranceEntrep typeAssuranceEntrep, BienAssuré bienAssuré, int idpack);
+    float CalculENTREPRENEURPrime(TypeAssuranceEntrep typeAssuranceEntrep, BienAssuré bienAssuré);
 
     float CalculSANTEPrime(TypeAssuranceSante typeAssuranceSante, int age, Gender gender);
 

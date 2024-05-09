@@ -1,8 +1,5 @@
-package esprit.pi.demo.entities.Maryem;
+package esprit.pi.demo.entities;
 
-import esprit.pi.demo.entities.Enumeration.TypeTransaction;
-import esprit.pi.demo.entities.Enumeration.TypeTransaction1;
-import esprit.pi.demo.entities.Firas.Portefeuille;
 import jakarta.persistence.*;
 import lombok.*;
 

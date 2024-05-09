@@ -1,21 +1,20 @@
-package esprit.pi.demo.Controller.maryem;
+package esprit.pi.demo.Controller;
 
 
-import esprit.pi.demo.Services.Maryem.IAssurance;
-import esprit.pi.demo.entities.Enumeration.*;
-import esprit.pi.demo.entities.Maryem.Assurance;
+import esprit.pi.demo.Services.IAssurance;
+import esprit.pi.demo.entities.*;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
+import esprit.pi.demo.dto.AgricoleAssuranceDTO;
+import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.dto.SanteAssuranceDTO;
+import esprit.pi.demo.dto.ScolaireAssuranceDTO;
 import java.util.List;
 import java.util.Set;
-
-
+@CrossOrigin("*")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user/Assurance")
@@ -42,8 +41,8 @@ public class AssuranceController {
     //        return service.updateAssurance(id,assurance);
     // }
     @DeleteMapping("/delete/{id}")
-    public String deleteAssurance(@PathVariable int id) {
-        return service.deleteAssurance(id);
+    public void deleteAssurance(@PathVariable int id) {
+         service.deleteAssurance(id);
     }
 
     @GetMapping("/getByPackAssur/{idpack}")
@@ -70,9 +69,9 @@ public class AssuranceController {
         return service.createScolaireAssurance(userId,packId, scolaireAssuranceDTO);
     }
 
-    @PostMapping("/create-entrepreneur-assurance/{userId}/{packId}")
-    public Assurance createEntrepreneurAssurance(  @PathVariable("userId") int userId,
-                                                   @PathVariable("packId") int packId,
+    @PostMapping("/create-entrepreneur-assurance")
+    public Assurance createEntrepreneurAssurance(  @RequestParam("userId") int userId,
+                                                   @RequestParam("packId") int packId,
                                                    @RequestBody EntrepreneurAssuranceDTO entrepreneurAssuranceDTO) {
         return service.createEntrepreneurAssurance(userId,packId, entrepreneurAssuranceDTO);
     }
@@ -106,26 +105,25 @@ public class AssuranceController {
         return service.CalculScolairePrime(capitalescolaire_assure);
     }
 
-    @GetMapping("/calculENTREPRENEURPrime/{typeAssuranceEntrep}/{bienAssure}/{idpack}")
+    @GetMapping("/calculENTREPRENEURPrime")
     public float calculENTREPRENEURPrime(
-            @PathVariable("typeAssuranceEntrep") TypeAssuranceEntrep typeAssuranceEntrep,
-            @PathVariable("bienAssure") BienAssuré bienAssuré,
-            @PathVariable("idpack") int idpack) {
-        return service.CalculENTREPRENEURPrime(typeAssuranceEntrep, bienAssuré, idpack);
+            @RequestParam("typeAssuranceEntrep") TypeAssuranceEntrep typeAssuranceEntrep,
+            @RequestParam("bienAssure") BienAssuré bienAssuré) {
+        return service.CalculENTREPRENEURPrime(typeAssuranceEntrep, bienAssuré);
     }
 
-    @GetMapping("/calculSANTEPrime/{typeAssuranceSante}/{age}/{gender}")
+    @GetMapping("/calculSANTEPrime")
     public float calculSANTEPrime(
-            @PathVariable("typeAssuranceSante") TypeAssuranceSante typeAssuranceSante,
-            @PathVariable("age") int age,
-            @PathVariable("gender") Gender gender) {
+            @RequestParam("typeAssuranceSante") TypeAssuranceSante typeAssuranceSante,
+            @RequestParam("age") int age,
+            @RequestParam("gender") Gender gender) {
         return service.CalculSANTEPrime(typeAssuranceSante, age, gender);
     }
 
-    @GetMapping("/calculAgriculturePrime/{capitalAgricole_assure}/{typeAgriculture}")
+    @GetMapping("/calculAgriculturePrime")
     public float calculAgriculturePrime(
-            @PathVariable("capitalAgricole_assure") float capitalAgricole_assure,
-            @PathVariable("typeAgriculture") TypeAgriculture typeAgriculture) {
+            @RequestParam("capitalAgricole_assure") float capitalAgricole_assure,
+            @RequestParam("typeAgriculture") TypeAgriculture typeAgriculture) {
         return service.CalculAgriculturePrime(capitalAgricole_assure, typeAgriculture);
     }
 

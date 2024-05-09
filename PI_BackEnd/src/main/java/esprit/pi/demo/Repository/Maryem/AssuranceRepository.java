@@ -1,6 +1,6 @@
-package esprit.pi.demo.Repository.Maryem;
+package esprit.pi.demo.Repository;
 
-import esprit.pi.demo.entities.Maryem.Assurance;
+import esprit.pi.demo.entities.Assurance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

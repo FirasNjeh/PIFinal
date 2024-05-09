@@ -1,18 +1,11 @@
-package esprit.pi.demo.Services.Maryem;
+package esprit.pi.demo.Services;
 
-import esprit.pi.demo.Repository.Maryem.AssuranceRepository;
-import esprit.pi.demo.Repository.Firas.PortefeuilleRepository;
-import esprit.pi.demo.Repository.Maryem.SinistreRepository;
+import esprit.pi.demo.Repository.AssuranceRepository;
+import esprit.pi.demo.Repository.PortefeuilleRepository;
+import esprit.pi.demo.Repository.SinistreRepository;
 
-import esprit.pi.demo.Repository.Maryem.TransactionAssuranceRepository;
-import esprit.pi.demo.entities.Enumeration.EtatSinistre;
-import esprit.pi.demo.entities.Enumeration.TypeTransaction;
-import esprit.pi.demo.entities.Enumeration.TypeTransaction1;
-import esprit.pi.demo.entities.Firas.Portefeuille;
-import esprit.pi.demo.entities.Firas.User;
-import esprit.pi.demo.entities.Maryem.Assurance;
-import esprit.pi.demo.entities.Maryem.Sinistre;
-import esprit.pi.demo.entities.Maryem.TransactionAssurance;
+import esprit.pi.demo.Repository.TransactionAssuranceRepository;
+import esprit.pi.demo.entities.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +39,15 @@ public class SinistreService implements ISinistreAssurance {
     public Sinistre saveSinistre(Sinistre sinistre)
     {
          repository.save(sinistre);
+        String to = "maryembouchahoua@gmail.com"; // replace with the actual recipient email
+        String subject = "New Sinistre Added";
+        String body = "A new Sinistre has been added with details:";
 
+        try {
+            sendEmail(to, subject, body);
+        } catch (MessagingException e) {
+            e.printStackTrace(); // handle the exception according to your application's needs
+        }
 
         return sinistre;
     }
@@ -123,15 +124,6 @@ public class SinistreService implements ISinistreAssurance {
         sinistre.setDateSinistre(new Date(System.currentTimeMillis()));
         sinistre.setEtatSinistre(EtatSinistre.EN_ATTENTE);
         sinistre.setAssurance(assurance);
-        String to = "maryembouchahoua@gmail.com"; // replace with the actual recipient email
-        String subject = "New Sinistre Added";
-        String body = "A new Sinistre has been added with details:";
-
-        try {
-            sendEmail(to, subject, body);
-        } catch (MessagingException e) {
-            e.printStackTrace(); // handle the exception according to your application's needs
-        }
         return repository.save(sinistre);
     }
     @Override

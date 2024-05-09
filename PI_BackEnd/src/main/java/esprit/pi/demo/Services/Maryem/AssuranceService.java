@@ -1,21 +1,11 @@
-package esprit.pi.demo.Services.Maryem;
+package esprit.pi.demo.Services;
 
-import esprit.pi.demo.DTO.Maryem.AgricoleAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.EntrepreneurAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.SanteAssuranceDTO;
-import esprit.pi.demo.DTO.Maryem.ScolaireAssuranceDTO;
-import esprit.pi.demo.Repository.Firas.PortefeuilleRepository;
-import esprit.pi.demo.Repository.Firas.UserRepository;
-import esprit.pi.demo.Repository.Maryem.AssuranceRepository;
-import esprit.pi.demo.Repository.Maryem.PackAssuranceRepository;
-import esprit.pi.demo.Repository.Maryem.SinistreRepository;
-import esprit.pi.demo.Repository.Maryem.TransactionAssuranceRepository;
-import esprit.pi.demo.entities.Enumeration.*;
-import esprit.pi.demo.entities.Firas.Portefeuille;
-import esprit.pi.demo.entities.Firas.User;
-import esprit.pi.demo.entities.Maryem.Assurance;
-import esprit.pi.demo.entities.Maryem.PackAssur;
-import esprit.pi.demo.entities.Maryem.TransactionAssurance;
+import esprit.pi.demo.Repository.*;
+import esprit.pi.demo.dto.AgricoleAssuranceDTO;
+import esprit.pi.demo.dto.EntrepreneurAssuranceDTO;
+import esprit.pi.demo.dto.SanteAssuranceDTO;
+import esprit.pi.demo.dto.ScolaireAssuranceDTO;
+import esprit.pi.demo.entities.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,9 +44,8 @@ public class AssuranceService implements IAssurance {
     }
     @Override
     //Agent+admin
-    public  String deleteAssurance(int id){
+    public void deleteAssurance(int id){
         repository.deleteById(id);
-        return "Assurance résiliée !!"+id;
     }
    // @Override
 //role : adminn+agent
@@ -115,7 +104,6 @@ public class AssuranceService implements IAssurance {
     @Override
     public Assurance createEntrepreneurAssurance(int iduser, int packId, EntrepreneurAssuranceDTO entrepreneurAssuranceDTO) {
 
-
         Assurance assurance = entrepreneurAssuranceDTO.toEntity();
 
         return createAssuranceWithPackAssurandUser(iduser, packId, assurance);
@@ -125,7 +113,6 @@ public class AssuranceService implements IAssurance {
     @Override
     public Assurance createSanteAssurance(int iduser, int packId, SanteAssuranceDTO santeAssuranceDTO) {
 
-
         Assurance assurance = santeAssuranceDTO.toEntity();
 
         return createAssuranceWithPackAssurandUser(iduser, packId, assurance);
@@ -133,7 +120,6 @@ public class AssuranceService implements IAssurance {
 
     @Override
     public Assurance createAgricoleAssurance(int iduser, int packId, AgricoleAssuranceDTO agricoleAssuranceDTO) {
-
 
         Assurance assurance = agricoleAssuranceDTO.toEntity();
 
@@ -189,12 +175,11 @@ public class AssuranceService implements IAssurance {
         }
     }
     @Override
-    public float CalculENTREPRENEURPrime(TypeAssuranceEntrep typeAssuranceEntrep, BienAssuré bienAssuré, int idpack) {
+    public float CalculENTREPRENEURPrime(TypeAssuranceEntrep typeAssuranceEntrep, BienAssuré bienAssuré) {
 //        TypeAssuranceEntrep typeAssuranceEntrep = entrepreneurAssuranceDTO.getTypeAssuranceEntrep();
 //        BienAssuré bienAssuré = entrepreneurAssuranceDTO.getBien_assuré();
-          PackAssur packAssur = packrepository.findById(idpack).orElseThrow(() -> new RuntimeException("Packassur with id " + idpack + " not found"));
-        float primeMin = packAssur.getPrimeMin();
-        float primeMax = packAssur.getPrimeMax();
+        float primeMin = 10000f;
+        float primeMax = 50000f;
         float calculatedPrime;
 
         switch (typeAssuranceEntrep) {

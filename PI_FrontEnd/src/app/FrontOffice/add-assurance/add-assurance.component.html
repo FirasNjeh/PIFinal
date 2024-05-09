@@ -1,0 +1,239 @@
+<body>
+
+<div class="container-fluid bg-primary py-6 bg-header" style="margin-bottom: 60px;"  >
+  <div class="row py-5" >
+    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+      <h1 class="display-4 text-white animated zoomIn" *ngIf="packAssur"> Ajouter un contrat d'assurance {{packAssur.nom}}  </h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-5  wow fadeInUp " data-wow-delay="0.1s"  style="padding-left:300px ;">
+  <div class="container py-10 px-5">
+    <div class="row g-5 px-3">
+      <div class="col-lg-9 px-5">
+        <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+
+        <div *ngIf="typeAssur === 'AGRICOLE'">
+          <h2>Acheter un contrat </h2>
+          <form [formGroup]="agricoleAssuranceForm" (ngSubmit)="createAgricoleAssurance()">
+            <div class="row g-3 ">
+              <div class="form-group col-xl-12">
+                <label for="montant_prime">Montant prime souhaite:</label>
+                <input type="number" id="montant_prime" formControlName="montant_prime" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="duree_contrat">Duree contrat:</label>
+                <input type="number" id="duree_contrat" formControlName="duree_contrat" class="form-control">
+              </div>
+            
+              
+              <div class="form-group col-xl-12">
+                <label for="nom_exploitation_agricole">Nom du projet:</label>
+                <input type="text" id="nom_exploitation_agricole" formControlName="nom_exploitation_agricole" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="lieu_de_lexploitation">Emplacement:</label>
+                <input type="text" id="lieu_de_lexploitation" formControlName="lieu_de_lexploitation" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="motant_de_couverture_souhaite">Montant de remboursement suhaite:</label>
+                <input type="number" id="motant_de_couverture_souhaite" formControlName="motant_de_couverture_souhaite" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="capitaleagricole_assuré">Capital assure:</label>
+                <input type="number" id="capitaleagricole_assuré" formControlName="capitaleagricole_assuré" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="typeagriculture">Type  d'agriculture:</label>
+                <select id="typeagriculture" formControlName="typeagriculture" class="form-control">
+                  <option value="cultures">Cultures</option>
+                  <option value="élevage">Élevage</option>
+                </select>
+              </div>
+
+              <div class="form-group col-xl-12">
+                <label for="typedecouverture">Type de couverture :</label>
+                <select id="typedecouverture" formControlName="typedecouverture" class="form-control">
+                  <option value="tempêtes">Tempêtes</option>
+               
+                  <option value="grêle">Grêle</option>
+                  <option value="inondations">Inondations</option>
+                </select>
+              </div>
+
+            </div>
+            <br/>
+            <div class="col-12">
+              <button type="submit" class="btn btn-dark w-100 py-3">Ajouter</button>
+            </div>
+          </form>
+        </div>
+
+          <div *ngIf="typeAssur === 'SANTE'">
+            <h2>Acheter un contrat</h2>
+            <form [formGroup]="santeAssuranceForm" (ngSubmit)="createSanteAssurance()">
+              <div class="row g-3 ">
+                <div class="form-group col-xl-12">
+                  <label for="montant_prime">Montant souhaite:</label>
+                  <input type="number" id="montant_prime" formControlName="montant_prime" class="form-control">
+                </div>
+                <div class="form-group col-xl-12">
+                  <label for="duree_contrat">Duree du contrat:</label>
+                  <input type="number" id="duree_contrat" formControlName="duree_contrat" class="form-control">
+                </div>
+                <div class="form-group col-xl-12">
+                  <label for="remboursement_en_cas_de_sinsitre">Remboursement en cas de sinsitre :</label>
+                  <input type="number" id="remboursement_en_cas_de_sinsitre" formControlName="remboursement_en_cas_de_sinsitre" class="form-control">
+                </div>
+               
+                <div class="col-xl-12">
+                  <label for="typeAssuranceSante">Type sante assure :</label>
+                  <select id="typeAssuranceSante" formControlName="typeAssuranceSante" class="form-control">
+                    <option value="">Vous etes ? </option>
+                    <option value="adherant">Adherant</option>
+                    <option value="conjoint">Conjoint</option>
+                  </select>
+                </div>
+                <div class="col-xl-12">
+                  <label for="niveauDeCouverture">Type de couverture :</label>
+                  <select id="niveauDeCouverture" formControlName="niveauDeCouverture" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="formule_de_base">Formule de base</option>
+                    <option value="formule_intermediaire">Formule intermediaire</option>
+                    <option value="formule_complete">Formule complete</option>
+                  </select>
+                </div>
+               
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-dark w-100 py-3">Ajouter</button>
+              </div>
+              <br/>
+            </form>
+          </div>
+
+          <div *ngIf="typeAssur === 'ENTREPRENEUR'">
+            <h2>Acheter un contrat</h2>
+            <form [formGroup]="entrepreneurAssuranceForm" (ngSubmit)="createEntrepreneurAssurance()">
+              <div class="row g-3 ">
+                <div class="form-group col-xl-12">
+                  <label for="montant_prime">Premium Amount:</label>
+                  <input type="number" id="montant_prime" formControlName="montant_prime" class="form-control">
+                </div>
+                <div class="form-group col-xl-12">
+                  <label for="duree_contrat">Duration of the Contract:</label>
+                  <input type="number" id="duree_contrat" formControlName="duree_contrat" class="form-control">
+                </div>
+                <div class="form-group col-xl-12">
+                  <label for="remboursement_en_cas_de_sinsitre">Reimbursement in Case of a Claim:</label>
+                  <input type="number" id="remboursement_en_cas_de_sinsitre" formControlName="remboursement_en_cas_de_sinsitre" class="form-control">
+                </div>
+                <div class="form-group col-xl-12">
+                  <label for="franchise">Franchise Amount (Deductible or Excess):</label>
+                  <input type="number" id="franchise" formControlName="franchise" class="form-control">
+                </div>
+                <div class="col-xl-12">
+                  <label for="nom_entreprise">Name of the Enterprise:</label>
+                  <input type="text" id="nom_entreprise" formControlName="nom_entreprise" class="form-control">
+                </div>
+                <div class="col-xl-12">
+                  <label for="adresse_entreprise">Address of the Enterprise:</label>
+                  <input type="text" id="adresse_entreprise" formControlName="adresse_entreprise" class="form-control">
+                </div>
+                <div class="col-xl-12">
+                  <label for="activité_entreprise">Activity of the Enterprise:</label>
+                  <input type="text" id="activité_entreprise" formControlName="activité_entreprise" class="form-control">
+                </div>
+                <div class="col-xl-12">
+                  <label for="typeAssuranceEntrep">Type of Entrepreneur Insurance:</label>
+                  <select id="typeAssuranceEntrep" formControlName="typeAssuranceEntrep" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="grande">Grande</option>
+                    <option value="moyenne">Moyenne</option>
+                    <option value="petite">Petite</option>
+                  </select>
+                </div>
+                <div class="col-xl-12">
+                  <label for="bien_assuré">Insured Property:</label>
+                  <select id="bien_assuré" formControlName="bien_assuré" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="bâtiments">Bâtiments</option>
+                    <option value="équipements">Équipements</option>
+                    <option value="stocks">Stocks</option>
+                  </select>
+                </div>
+                <div class="col-xl-12">
+                  <label for="historique_de_sinistralite">Claim History:</label>
+                  <input type="text" id="historique_de_sinistralite" formControlName="historique_de_sinistralite" class="form-control">
+                </div>
+                <div class="col-xl-12">
+                  <label for="responsbilité_civile">Civil Liability:</label>
+                  <input type="text" id="responsbilité_civile" formControlName="responsbilité_civile" class="form-control">
+                </div>
+              </div>
+              <br/>
+              <div class="col-12">
+                <button type="submit" class="btn btn-dark w-100 py-3">Submit</button>
+              </div>
+            </form>
+          </div>
+
+        <div *ngIf="typeAssur === 'SCOLAIRE'">
+          <h2>Acheter un contrat</h2>
+          <form [formGroup]="scolaireAssuranceForm" (ngSubmit)="createScolaireAssurance()">
+            <div class="row g-3 ">
+              <div class="form-group col-xl-12">
+                <label for="montant_prime">Premium Amount:</label>
+                <input type="number" id="montant_prime" formControlName="montant_prime" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="duree_contrat">Duration of the Contract:</label>
+                <input type="number" id="duree_contrat" formControlName="duree_contrat" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="remboursement_en_cas_de_sinsitre">Reimbursement in Case of a Claim:</label>
+                <input type="number" id="remboursement_en_cas_de_sinsitre" formControlName="remboursement_en_cas_de_sinsitre" class="form-control">
+              </div>
+              <div class="form-group col-xl-12">
+                <label for="franchise">Franchise Amount (Deductible or Excess):</label>
+                <input type="number" id="franchise" formControlName="franchise" class="form-control">
+              </div>
+              <div class="col-xl-12">
+                <label for="nom_enfant">Child's First Name:</label>
+                <input type="text" id="nom_enfant" formControlName="nom_enfant" class="form-control">
+              </div>
+              <div class="col-xl-12">
+                <label for="prenom_enfant">Child's Last Name:</label>
+                <input type="text" id="prenom_enfant" formControlName="prenom_enfant" class="form-control">
+              </div>
+              <div class="col-xl-12">
+                <label for="capitalescolaire_assuré">Insured School Capital:</label>
+                <input type="number" id="capitalescolaire_assuré" formControlName="capitalescolaire_assuré" class="form-control">
+              </div>
+              <div class="col-xl-12">
+                <label for="montant_couverture">Coverage Amount:</label>
+                <input type="number" id="montant_couverture" formControlName="montant_couverture" class="form-control">
+              </div>
+            </div>
+            <br/>
+            <div class="col-12">
+              <button type="submit" class="btn btn-dark w-100 py-3">Submit</button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="text-center">
+      <button type="button" class="btn btn-lg btn-outline-primary rounded-pill" [routerLink]="['/packs']">
+        <i class="bi bi-arrow-left-circle-fill me-2"></i>
+        Retour à la liste des packs d'assurances
+      </button>
+    </div>
+
+</body>

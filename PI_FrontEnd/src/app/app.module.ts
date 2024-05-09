@@ -11,6 +11,19 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { PackAssurListComponent } from './BackOffice/pack-assur-list/pack-assur-list.component';
+import {HttpClientModule} from "@angular/common/http";
+import { AssurancesListComponent } from './BackOffice/assurances-list/assurances-list.component';
+import { SinistresListComponent } from './BackOffice/sinistres-list/sinistres-list.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DashboardAssurancesComponent } from './BackOffice/dashboard-assurances/dashboard-assurances.component';
+import { PackAssurComponent } from './FrontOffice/pack-assur/pack-assur.component';
+import { AddAssuranceComponent } from './FrontOffice/add-assurance/add-assurance.component';
+import { AssurancesComponent } from './FrontOffice/assurances/assurances.component';
+import { AddSinistreComponent } from './FrontOffice/add-sinistre/add-sinistre.component';
+import { SinistresComponent } from './FrontOffice/sinistres/sinistres.component';
+import { SimulateurAssuranceComponent } from './FrontOffice/similateur-assurance/simulateur-assurance.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +36,26 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
     FooterFrontComponent,
     HeaderFrontComponent,
     HomeFrontComponent,
-    
-    
+    PackAssurListComponent,
+    AssurancesListComponent,
+    SinistresListComponent,
+    DashboardAssurancesComponent,
+    PackAssurComponent,
+    AddAssuranceComponent,
+    AssurancesComponent,
+    AddSinistreComponent,
+    SinistresComponent,
+    SimulateurAssuranceComponent,
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

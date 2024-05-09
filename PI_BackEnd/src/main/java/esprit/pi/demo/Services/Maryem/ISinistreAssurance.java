@@ -1,7 +1,7 @@
-package esprit.pi.demo.Services.Maryem;
+package esprit.pi.demo.Services;
 
 
-import esprit.pi.demo.entities.Maryem.Sinistre;
+import esprit.pi.demo.entities.Sinistre;
 
 import java.util.List;
 import java.util.Set;

@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="pagetitle">
+        <h1>Dashboard Assurances</h1>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card revenue-card">
+            <div class="card-body">
+              <h5 class="card-title"> Nombre de packs<span></span></h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-layers-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 *ngIf="packsAssur">{{packsAssur.length}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card appointment-card">
+            <div class="card-body">
+              <h5 class="card-title">Nombre d'assurances</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-card-checklist"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 *ngIf="assurances">{{assurances.length}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xxl-4 col-xl-12">
+          <div class="card info-card customers-card">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de sinistres</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 *ngIf="sinistres">{{sinistres.length}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div id="PacksByTypeChart"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="AssurancesByTypeChart"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="SinistresByTypeChart"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="assurancesChart"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="sinistresChart"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

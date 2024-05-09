@@ -1,7 +1,6 @@
-package esprit.pi.demo.entities.Maryem;
+package esprit.pi.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import esprit.pi.demo.entities.Enumeration.PackAssurance;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +24,6 @@ public class PackAssur implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private PackAssurance packAssurance;
-    @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy="packAssur")
     private Set<File> images;
