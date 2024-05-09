@@ -1,0 +1,115 @@
+.appointment-card .card-icon {
+    color: #4154f1;
+    background: #f6f6fe;
+}
+
+ .card-icon {
+    font-size: 32px;
+    line-height: 0;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.revenue-card .card-icon {
+    color: #2eca6a;
+    background: #e0f8e9;
+}
+
+ .customers-card .card-icon {
+    color: #ff771d;
+    background: #ffecdf;
+}
+
+.info-card h6 {
+    font-size: 28px;
+    color: #012970;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.card-title {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #012970;
+    font-family: "Poppins", sans-serif;
+}
+.element.style {
+    max-height: 400px;
+    display: block;
+    box-sizing: border-box;
+    height: 400px;
+    width: 436px;
+}
+
+
+.activity .activity-item .activite-label {
+    color: #888;
+    position: relative;
+    flex-shrink: 0;
+    flex-grow: 0;
+    min-width: 64px;
+}
+.activity .activity-item .activity-content {
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.activity {
+    font-size: 14px;
+}
+
+.d-flex {
+    display: flex !important;
+}
+.green-circle {
+    color: green;
+  }
+
+  .activity-item {
+    overflow: hidden; /* Pour cacher tout contenu excédentaire */
+  }
+
+  .message-background {
+    background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond avec transparence */
+    padding: 5px; /* Ajoute un peu d'espace autour du contenu */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Bordure avec transparence */
+    border-radius: 5px; /* Arrondir les coins */
+  }
+  
+  .red-bg {
+    background-color: rgba(255, 0, 0, 0.3); /* Rouge avec transparence */
+  }
+  
+  .green-bg {
+    background-color: rgba(0, 255, 0, 0.3); /* Vert avec transparence */
+  }
+
+  .element.style {
+    position: relative;
+    width: 837px;
+    height: 400px;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+    cursor: default;
+}
+
+#chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.recent-sales { height: 420px;}
+
+
+
+
+
+  
+
+ 

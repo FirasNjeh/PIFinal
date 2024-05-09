@@ -1,0 +1,106 @@
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Les Crédits</h5>
+                <div class="search-container">
+                  <input type="number" placeholder="Rechercher par Montant" [(ngModel)]="searchText">
+                  <button (click)="rechercher(searchText)">Rechercher</button>
+                </div>
+  
+                <!-- Table with stripped rows -->
+                <table class="table datatable" *ngIf="(credit$ | async) as credits">
+                  <thead>
+                    <tr style="text-align: center;  vertical-align: middle;">
+                      <th></th>
+                      <th>id</th>
+                      <!-- <th>id utilisateur</th> -->
+                      <th>Status Crédit</th>
+                      <th>Pack Crédit</th>
+                      <th>Date Deb </th>
+                      <th>Montant Crédit</th>
+                      <th>Durée</th>
+                     
+                      
+                    </tr>
+                  </thead>
+                  <tbody style="text-align: center;  vertical-align: middle;">
+                    
+                    <tr *ngFor="let c of credits" >
+                      <td>
+                        <i  (click)="openDetailsModal(c, detailsModal)" class="bx bxs-file"></i>
+                      </td>
+                      <td>{{ c.id }}</td>
+                      <!-- <td>{{ c.user.id }}</td> -->
+                      <td>
+                      <span *ngIf="c.statusCredit === 'APPROUVE'" class="badge bg-success">APPROUVE</span>
+                      <span *ngIf="c.statusCredit === 'REFUSE'" class="badge bg-danger">REFUSE</span>
+                      <span *ngIf="c.statusCredit === 'CLOTURE'" class="badge bg-dark">CLOTURE</span>
+                      </td>
+                      <td>{{ c.packCredit }}</td>
+                      <td>{{ c.dateDeb }}</td>
+                      <td>{{ c.montant }}</td>
+                      <td>{{ c.duree   }}</td>
+                      <td> 
+                        <i class="bx bxs-trash" (click)="deleteCredit(c.id)"></i>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+
+      <ng-template #detailsModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Credit Details</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <ng-container *ngIf="selectedCredit.statusCredit === 'REFUSE' || selectedCredit.statusCredit === 'CLOTURE'">
+          <p><strong>ID:</strong> {{ selectedCredit.id }}</p>
+          <td>
+            <span *ngIf="selectedCredit.statusCredit === 'REFUSE'" class="badge bg-danger">REFUSE</span>
+            <span *ngIf="selectedCredit.statusCredit === 'CLOTURE'" class="badge bg-dark">CLOTURE</span>
+      </td>
+          <p><strong>Pack crédit:</strong> {{ selectedCredit.packCredit}}</p>
+          <p><strong>Type Crédit::</strong> {{ selectedCredit.typeCredit }}</p>
+          <p><strong>Montant:</strong> {{ selectedCredit.montant }}</p>
+          <p><strong>Duree:</strong> {{ selectedCredit.duree}}</p>
+          <p><strong>Relation Garant:</strong> {{ selectedCredit.realtionGarant}}</p>
+          </ng-container>
+
+          <ng-container *ngIf="selectedCredit.statusCredit === 'APPROUVE'">
+
+          <p><strong>ID:</strong> {{ selectedCredit.id }}</p>
+          <p *ngIf="selectedCredit.statusCredit === 'APPROUVE'" class="badge bg-success"><strong>Statut Crédit :</strong> {{ selectedCredit.statusCredit}}</p>
+          <p><strong>Pack crédit:</strong> {{ selectedCredit.packCredit}}</p>
+          <p><strong>Type Crédit::</strong> {{ selectedCredit.typeCredit }}</p>
+          <p><strong>Montant:</strong> {{ selectedCredit.montant }}</p>
+          <p><strong>Duree:</strong> {{ selectedCredit.duree}}</p>
+          <p><strong>Relation Garant:</strong> {{ selectedCredit.realtionGarant}}</p>
+          <p><strong>Date début Crédit:</strong> {{ selectedCredit.dateDeb }}</p>
+          <p><strong>Date du prochain paiement:</strong> {{ selectedCredit.datepp }}</p>
+          <p><strong>Montant Restant:</strong> {{ selectedCredit.montantRestant}}</p>
+          <p><strong>Amortissement:</strong> {{ selectedCredit.amortissement }}</p>
+          <p><strong>Annuité:</strong> {{ selectedCredit.annuite}}</p>
+          <p><strong>Credit History:</strong> {{ selectedCredit.creditHistory }}</p>
+          </ng-container>
+
+
+          <!-- Add other assurance properties here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+        </div>
+      </ng-template>
+</main>

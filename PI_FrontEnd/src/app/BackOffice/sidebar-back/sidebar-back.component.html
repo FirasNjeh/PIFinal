@@ -4,11 +4,40 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " [routerLink]="['/admin']">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/admin/afficherPack']">
+          <i class="bi bi-grid"></i>
+          <span>Pack Crédit</span>
+        </a>
+      </li>
+
+      <!-- <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/admin/ajoutPack']">
+          <i class="bi bi-grid"></i>
+          <span>Ajouter Pack Crédit</span>
+        </a>
+      </li> -->
+
+      <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/admin/Credits']">
+          <i class="bi bi-grid"></i>
+          <span>Crédit</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " [routerLink]="['/admin/Garants']">
+          <i class="bi bi-grid"></i>
+          <span>Garants</span>
+        </a>
+      </li>
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -234,3 +263,6 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+
+  
+  

@@ -1,0 +1,76 @@
+<app-head-front></app-head-front>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+
+
+<div class="container-fluid bg-primary py-6 bg-header" style="margin-bottom: 60px;" >
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">Mes crédits</h1>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid facts py-5 pt-lg-0">
+    <div class="container py-5 pt-lg-0">
+        <div class="row justify-content-center"> <!-- Ajout de justify-content-center pour centrer les colonnes -->
+            <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s" >
+                <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                    <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                        <i class="fa fa-users text-primary"></i>
+                    </div>
+                    <div class="ps-4">
+                        <h5 class="text-white mb-0">Nbr Crédit </h5>
+                        <h1 class="text-white mb-0" data-toggle="counter-up">{{ nbrCredits }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+                <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
+                    <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
+                        <i class="fa fa-check text-white"></i>
+                    </div>
+                    <div class="ps-4">
+                        <h5 class="text-primary mb-0">Nbr Crédit cloturé</h5>
+                        <h1 class="mb-0" data-toggle="counter-up"> {{nbrCreditsClo}}</h1>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Facts Start -->
+
+    <!-- Pricing Plan Start -->
+    <div class="container-fluid py-4 py-md-9 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-7 py-md-10 ">
+            
+            <div class="row g-0"  *ngIf="(credit$ | async) as credits">
+                <div class="col-lg-3 wow slideInUp mb-4 mx-5" data-wow-delay="0.6s" *ngFor="let c of credits" >
+                    <div class="bg-light rounded ">
+                        <div class="border-bottom py-4 px-5 mb-4">
+                            <h4 class="text-primary mb-1">Le montant du credit est :</h4>
+                            <small class="text-uppercase">{{c.montant}}</small>
+                        </div>
+                        <div class="p-5 pt-0">
+                            <h1 class="display-5 mb-3">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">TND</small>{{c.paiementMensuel}}<small
+                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
+                            </h1>
+                            <div class="d-flex justify-content-between mb-3"><span>{{c.packCredit}}</span><i class="fa fa-check text-primary pt-1"></i></div>
+                            <div class="d-flex justify-content-between mb-3"><span>{{c.datepp}}</span><i class="fa fa-check text-primary pt-1"></i></div>
+                            <!-- <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-times text-danger pt-1"></i></div>
+                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div> -->
+                            <a [routerLink]="['/Credit',c.id]" class="btn btn-primary py-2 px-4 mt-4">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Plan End -->

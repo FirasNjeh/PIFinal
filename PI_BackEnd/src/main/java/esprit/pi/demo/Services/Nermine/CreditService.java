@@ -111,8 +111,8 @@ public class CreditService implements ICreditService {
         u.setNbr_credit(u.getNbr_credit()+1);
 
         credit.setCreditHistory(CreditHistory.NONE_PAYED_YET);
-        credit.setAnnuité(calculRemboursementAnnuite(credit.getId()));
-        credit.setPaiementMensuel(credit.getAnnuité()/12);
+        credit.setAnnuite(calculRemboursementAnnuite(credit.getId()));
+        credit.setPaiementMensuel(credit.getAnnuite()/12);
      //   credit.setTauxInteret(calculateInterestRate(credit));
 
         repository.save(credit);
@@ -274,7 +274,7 @@ return credit;
         double A;
         Credit c = repository.findById(id).orElse(null);
         A = (c.getMontant() * (c.getTauxInteret() / 100)) / (1 - Math.pow(1 + (c.getTauxInteret() / 100), (-c.getDuree())));
-        c.setAnnuité((float) A);
+        c.setAnnuite((float) A);
         return (float)A;
 
     }

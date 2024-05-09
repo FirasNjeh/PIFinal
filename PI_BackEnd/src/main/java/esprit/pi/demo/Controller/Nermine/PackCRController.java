@@ -12,8 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/user/PackCR")
 @AllArgsConstructor
+
+
 public class PackCRController {
 
     private IPackCRService service;

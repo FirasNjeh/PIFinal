@@ -1,0 +1,84 @@
+<app-head-front></app-head-front>
+
+<!-- titre -->
+<div class="container-fluid bg-primary py-6 bg-header" style="margin-bottom: 60px;"  >
+    <div class="row py-5" >
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn"> Ajouter un Crédit  </h1>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5  wow fadeInUp " data-wow-delay="0.1s"  style="padding-left:300px ;" *ngIf="pack1 | async as pack">
+    <div class="container py-10 px-5">
+        <div class="row g-5 px-3">
+            <div class="col-lg-9 px-5">
+                <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
+                    <form (ngSubmit)="onAjout()">
+                        <div class="row g-3 ">
+                            <div class="col-xl-12">
+                                <input type="number" class="form-control bg-light border-0" name="montant" placeholder="Montant Crédit" style="height: 55px;" min={{pack.montantMin}} max={{pack.montantMax}} [(ngModel)]="montant">
+                            </div>
+                            <div class="col-12">
+                                <input type="number" class="form-control bg-light border-0" name="duree" placeholder="Durée du pret" style="height: 55px;" min="0" [(ngModel)]="duree">
+                            </div>
+                            <div class="col-12">
+                                <input type="number" class="form-control bg-light border-0" name="packCredit" placeholder={{pack.packCredit}} style="height: 55px;" disabled>
+                            </div>
+
+                            <div class="section-title position-relative pb-1 mb-2 mx-2 pt-lg-3" style="max-width: 600px;">
+                                <h4 class="mb-0">Votre Garant :</h4>
+                            </div>
+                            
+                            <div class="col-xl-12">
+                                <input type="text" class="form-control bg-light border-0" name="name" placeholder="Nom Garant" style="height: 55px;" [(ngModel)]="name">
+                            </div>
+                            <div class="col-xl-12">
+                                <input type="text" class="form-control bg-light border-0" name="prenomGarant" placeholder="Prénom Garant" style="height: 55px;" [(ngModel)]="prenomGarant">
+                            </div>
+                            <div class="col-xl-12">
+                                <input type="number" class="form-control bg-light border-0" name="cin" placeholder="CIN Garant" style="height: 55px;" [(ngModel)]="cin">
+                            </div>
+                            <div class="col-xl-12">
+                                <input type="number" class="form-control bg-light border-0" name="salaire_garant"placeholder="Salaire Garant" style="height: 55px;" [(ngModel)]="salaire_garant">
+                            </div>
+                            <div class="col-12">
+                                <select class="form-select bg-light border-0" placeholder="Précisez la relation avec votre Garant" style="height: 55px;"name="selectedgarant" [(ngModel)]="selectedgarant">
+                                    <!-- <option selected>Précisez la relation avec votre Garant</option> -->
+                                    <option *ngFor="let option of RelationGarant" [value]="option">{{option}}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12" >
+                                <button class="btn btn-dark w-100 py-3" 
+                                        (click)="openConfirmeModal(ConfirmeModal)">
+                                    Confirmer Votre Crédit
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                
+            </div>
+        </div>
+    </div>
+    <ng-template #ConfirmeModal let-modal>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-basic-title">Demande de crédit ajouté avec succés</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <p> Votre demande de crédit est en cours de traitement. Veuillez consulter votre boite mail pour plus de détails</p>
+            <button class="btn btn-dark w-100 py-3" routerLink="/home" (click)="modal.dismiss('Cross click')">OK</button>
+        </div>
+      </div>
+    </ng-template>  
+
+   
+</div>
+

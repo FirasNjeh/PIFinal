@@ -1,0 +1,46 @@
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Les Garants</h5>
+  
+                <!-- Table with stripped rows -->
+                <table class="table datatable" *ngIf="(garant$ | async) as garants">
+                  <thead>
+                    <tr style="text-align: center;  vertical-align: middle;">
+                      <th>id</th>
+                      <!-- <th>id utilisateur</th> -->
+                      <th>Cin</th>
+                      <th>Nom</th>
+                      <th>Prénom </th>
+                      <th>Salaire Garant </th>
+                      <th></th>
+                    
+                      
+                    </tr>
+                  </thead>
+                  <tbody style="text-align: center;  vertical-align: middle;">
+                    <tr *ngFor="let g of garants">
+                      <td>{{ g.id }}</td>
+                      <!-- <td>{{ c. }}</td> -->
+                      <td>{{ g.cin }}</td>
+                      <td>{{ g.name }}</td>
+                      <td>{{ g.prenomGarant }}</td>
+                      <td>{{ g.salaire_garant }}</td>
+                      <td><i class="bx bxs-trash" (click)="deleteGarant(g.id)"></i></td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+</main>

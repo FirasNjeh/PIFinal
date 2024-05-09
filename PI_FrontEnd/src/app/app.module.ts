@@ -11,6 +11,28 @@ import { AllTemplateFrontComponent } from './FrontOffice/all-template-front/all-
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
+import { PackCRFrontComponent } from './FrontOffice/pack-cr-front/pack-cr-front.component';
+import { HeadFrontComponent } from './FrontOffice/head-front/head-front.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AjoutPackBackComponent } from './BackOffice/ajout-pack-back/ajout-pack-back.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AfficherPackBackComponent } from './BackOffice/afficher-pack-back/afficher-pack-back.component';
+import { LePackFrontComponent } from './FrontOffice/le-pack-front/le-pack-front.component';
+import { FormulaireCreditFrontComponent } from './FrontOffice/formulaire-credit-front/formulaire-credit-front.component';
+import { CreditBackComponent } from './BackOffice/credit-back/credit-back.component';
+import { GarantBackComponent } from './BackOffice/garant-back/garant-back.component';
+import { CreditFrontComponent } from './FrontOffice/credit-front/credit-front.component';
+import { LeCreditFrontComponent } from './FrontOffice/le-credit-front/le-credit-front.component';
+import { MonthlyPaymentFrontComponent } from './FrontOffice/monthly-payment-front/monthly-payment-front.component';
+import { AdminComponent } from './BackOffice/admin/admin.component';
+import { LeCreditBackComponent } from './BackOffice/le-credit-back/le-credit-back.component';
+import { SimulateurCreditComponent } from './FrontOffice/simulateur-credit/simulateur-credit.component';
+import { SalaireComponent } from './FrontOffice/salaire/salaire.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { DatePipe } from '@angular/common';
+import { SimulateursComponent } from './FrontOffice/simulateurs/simulateurs.component';
+import { TableAmortissementComponent } from './FrontOffice/table-amortissement/table-amortissement.component';
+import { CurrencyComponent } from './FrontOffice/currency/currency.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './PagesAuthentification/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +69,24 @@ import { SetPasswordComponent } from './PagesAuthentification/set-password/set-p
     FooterFrontComponent,
     HeaderFrontComponent,
     HomeFrontComponent,
+    PackCRFrontComponent,
+    HeadFrontComponent,
+    AjoutPackBackComponent,
+    AfficherPackBackComponent,
+    LePackFrontComponent,
+    FormulaireCreditFrontComponent,
+    CreditBackComponent,
+    GarantBackComponent,
+    CreditFrontComponent,
+    LeCreditFrontComponent,
+    MonthlyPaymentFrontComponent,
+    AdminComponent,
+    LeCreditBackComponent,
+    SimulateurCreditComponent,
+    SalaireComponent,
+    SimulateursComponent,
+    TableAmortissementComponent,
+    CurrencyComponent,
     LoginComponent,
     NotFoundComponent,
     GestionUserComponent,
@@ -65,6 +105,11 @@ import { SetPasswordComponent } from './PagesAuthentification/set-password/set-p
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
+    ReactiveFormsModule,
+    
+  ],
+  providers: [DatePipe ],
     CalendarModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
