@@ -48,6 +48,16 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { ForgotPasswordComponent } from './PagesAuthentification/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './PagesAuthentification/set-password/set-password.component';
 import { ProfileFrontComponent } from './FrontOffice/profile-front/profile-front.component';
+import { PackAssurListComponent } from './BackOffice/pack-assur-list/pack-assur-list.component';
+import { AssurancesListComponent } from './BackOffice/assurances-list/assurances-list.component';
+import { SinistresListComponent } from './BackOffice/sinistres-list/sinistres-list.component';
+import { DashboardAssurancesComponent } from './BackOffice/dashboard-assurances/dashboard-assurances.component';
+import { PackAssurComponent } from './FrontOffice/pack-assur/pack-assur.component';
+import { AddAssuranceComponent } from './FrontOffice/add-assurance/add-assurance.component';
+import { AssurancesComponent } from './FrontOffice/assurances/assurances.component';
+import { AddSinistreComponent } from './FrontOffice/add-sinistre/add-sinistre.component';
+import { SinistresComponent } from './FrontOffice/sinistres/sinistres.component';
+import { SimulateurAssuranceComponent } from './FrontOffice/similateur-assurance/simulateur-assurance.component';
 
 
 
@@ -97,6 +107,16 @@ import { ProfileFrontComponent } from './FrontOffice/profile-front/profile-front
     ForgotPasswordComponent,
     SetPasswordComponent,
     ProfileFrontComponent,
+    PackAssurListComponent,
+    AssurancesListComponent,
+    SinistresListComponent,
+    DashboardAssurancesComponent,
+    PackAssurComponent,
+    AddAssuranceComponent,
+    AssurancesComponent,
+    AddSinistreComponent,
+    SinistresComponent,
+    SimulateurAssuranceComponent,
    
     
     

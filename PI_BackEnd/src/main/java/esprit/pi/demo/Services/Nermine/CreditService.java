@@ -78,7 +78,7 @@ public class CreditService implements ICreditService {
         float montant = credit.getMontant();
         repository.save(credit);
     //si credit approuvé
-        if((u.getNbr_credit()<=2) &&(montant<MaxCredit(credit.getId())) && (montant<pa.getPackCRById(idp).getMontantMax()))
+        if((u.getNbr_credit()<=20) &&(montant<MaxCredit(credit.getId())) && (montant<pa.getPackCRById(idp).getMontantMax()))
         {
         credit.setStatusCredit(StatusCredit.APPROUVE);
 
@@ -116,8 +116,24 @@ public class CreditService implements ICreditService {
      //   credit.setTauxInteret(calculateInterestRate(credit));
 
         repository.save(credit);
+            String credit1="http://localhost:4200/MonthlyPayment/"+credit.getId();
+            String QR_CODE_IMAGE_PATH = "C:/Users/nermi/Videos/finaaaal/PIFinal/PI_FrontEnd/src/assets/FrontOffice/img/Credit_"+credit.getId()+".png";
+            byte[] image = new byte[0];
+            try {
+                // Generate and Return Qr Code in Byte Array
+                image = getQRCodeImage(credit1,250,250);
 
-        //envoyer le mail que le credit est approuvé
+                // Generate and Save Qr Code Image in static/image folder
+                generateQRCodeImage(credit1,250,250,QR_CODE_IMAGE_PATH);
+
+            } catch (WriterException | IOException e) {
+                e.printStackTrace();
+            }
+            // Convert Byte Array into Base64 Encode String
+            String qrcode = Base64.getEncoder().encodeToString(image);
+
+
+            //envoyer le mail que le credit est approuvé
         String tomail="nerminenafti@gmail.com";
         String subject="Credit approuvé";
         String body ="Votre credit a ete approuvé nshlh mabrouk ";

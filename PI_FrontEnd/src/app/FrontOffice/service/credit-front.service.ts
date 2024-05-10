@@ -26,7 +26,7 @@ export class CreditFrontService {
 
   //recuperation de tous les Credit d'un utilisateur
   public getCreditUser(id:number): Observable<Array<Credit>> {
-    return this.http.get<Array<Credit>>('http://localhost:8081/user/Credit/get/Credits/'+id);
+    return this.http.get<Array<Credit>>('http://localhost:8081/user/Credit/get/Credits/1');
   }
 
   //recuperation du credit par id user

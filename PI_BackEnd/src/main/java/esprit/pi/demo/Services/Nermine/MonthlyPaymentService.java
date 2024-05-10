@@ -74,7 +74,7 @@ public class MonthlyPaymentService implements IMonthlyPaymentService {
             repository1.save(c);
 
            //montant restant à payer
-            c.setMontantRestant(c.getMontant()- mp.getMontant());
+            c.setMontantRestant(c.getMontantRestant()- mp.getMontant());
             if(c.getMontantRestant()==0)
             {c.setStatusCredit(StatusCredit.CLOTURE);
                 c.getUserCR().setNbr_credit(c.getUserCR().getNbr_credit()-1);

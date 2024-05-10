@@ -1,0 +1,129 @@
+<body>
+
+<div class="container-fluid py-6 bg-primary bg-header" style="margin-bottom: 60px;">
+  <div class="row py-5">
+    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+      <h1 class="display-4 text-white animated zoomIn">Mes Sinistres</h1>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <button type="button" class="btn btn-lg btn-outline-primary rounded-pill" [routerLink]="['/addsinistre', this.idAssurance]">
+    <i class="bi bi-plus-circle-fill me-2"></i>
+    Ajouter un nouveau sinistre
+  </button>
+</div>
+
+<br/>
+
+<div class="container-fluid py-10 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container py-10">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6" *ngFor="let sinistre of sinistres">
+        <div class="wow zoomIn" data-wow-delay="0.3s" (click)="openSinistreDetailsModal(sinistreDetailsModal, sinistre)">
+          <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" [ngClass]="{'text-success': sinistre?.etatSinistre === 'ACCEPTE', 'text-danger': sinistre?.etatSinistre === 'REFUSE', 'text-warning': sinistre?.etatSinistre === 'EN_ATTENTE'}">
+            <div><i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem; font-weight: bold;"></i></div>
+            <h4 class="mb-3">{{ sinistre.id }}</h4>
+            <p class="m-0">{{ sinistre.dateSinistre | date:'short' }}</p>
+            <a class="btn btn-lg btn-primary rounded" (click)="openImageSinistreModal(imageSinistreModal, sinistre.id); $event.stopPropagation();">
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="totalItems"
+    [(page)]="currentPage"
+    [pageSize]="pageSize"
+    (pageChange)="getListSinistresByAssurance(idAssurance)"
+  ></ngb-pagination>
+
+  <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getListSinistresByAssurance(idAssurance)">
+    <option [ngValue]="3">3 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+    <option [ngValue]="9">9 items per page</option>
+  </select>
+</div>
+  <div class="text-center">
+    <button type="button" class="btn btn-lg btn-outline-primary rounded-pill" [routerLink]="['/assurances']">
+      <i class="bi bi-arrow-left-circle-fill me-2"></i>
+      Retour à la liste d'assurances
+    </button>
+  </div>
+
+</body>
+
+<ng-template #sinistreDetailsModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Détails du Sinistre {{ selectedSinistre.id }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Date du Sinistre:</strong> {{ selectedSinistre.dateSinistre | date:'short' }}</p>
+    <p><strong>Estimation de l'Expert:</strong> {{ selectedSinistre.estimation_expert }}</p>
+    <p><strong>Remboursement:</strong> {{ selectedSinistre.remboursement }}</p>
+    <p><strong>Lieu:</strong> {{ selectedSinistre.lieu }}</p>
+    <p><strong>Description:</strong> {{ selectedSinistre.description }}</p>
+    <p><strong>Etat du Sinistre:</strong> {{ selectedSinistre.etatSinistre }}</p>
+    <p><strong> Images: </strong> </p>
+    <div *ngFor="let image of selectedSinistre.images; let i = index">
+      <img [src]="'data:' + image.type + ';base64,' + image.data" alt="Packassurimage {{i}}" width="150" height="150">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #imageSinistreModal let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="modal-basic-title">Upload Image</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="row">
+          <div class="col-8">
+            <label class="btn btn-default p-0">
+              <input type="file" (change)="selectFile($event)" />
+            </label>
+          </div>
+
+          <div class="col-4">
+            <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+              Upload
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="currentFile" class="progress my-3">
+          <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            attr.aria-valuenow="{{ progress }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }"
+          >
+            {{ progress }}%
+          </div>
+        </div>
+
+        <div *ngIf="messageUploadImage" class="alert alert-danger" role="alert">{{ messageUploadImage }}</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="onOkClick()">OK</button>
+
+    </div>
+  </div>
+</ng-template>

@@ -27,11 +27,9 @@ public class Sinistre implements Serializable {
     private String description;
     @Enumerated(EnumType.STRING)
     private EtatSinistre etatSinistre;
-    @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy="sinistre")
     private Set<File> images;
-    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     private Assurance assurance;

@@ -1,0 +1,90 @@
+<main class="main" id="main">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="pagetitle">
+        <h1>Sinistres</h1>
+      </div>
+
+
+      <div class="px-3">
+        <div class="d-flex justify-content-center">
+          <div class="form-group" style="width: 25%">
+            <label for="etatSinistreSelect" class="d-flex align-items-center">
+              Filter by etat:&nbsp;&nbsp;
+              <i class="fas fa-sliders-h"></i>
+            </label>
+            <select class="form-control form-control-sm" id="etatSinistreSelect" [(ngModel)]="selectedEtatSinistre">
+              <option value="">All</option>
+              <option value="ACCEPTE">ACCEPTE</option>
+              <option value="REFUSE">REFUSE</option>
+              <option value="EN_ATTENTE">EN_ATTENTE</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+
+      <table class="table datatable" *ngIf="(sinistres?.length ?? 0) > 0">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date Sinistre</th>
+          <th>Estimation Expert</th>
+          <th>Remboursement</th>
+          <th>Lieu</th>
+          <th>Description</th>
+          <th>Etat Sinistre</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let sinistre of filterSinistres(sinistres)">
+          <td>{{ sinistre.id }}</td>
+          <td>{{ sinistre.dateSinistre }}</td>
+          <td>{{ sinistre.estimation_expert }}</td>
+          <td>{{ sinistre.remboursement }}</td>
+          <td>{{ sinistre.lieu }}</td>
+          <td>{{ sinistre.description }}</td>
+          <td>
+          <span [ngSwitch]="sinistre.etatSinistre">
+            <span *ngSwitchCase="'ACCEPTE'" class="badge bg-success">ACCEPTE</span>
+            <span *ngSwitchCase="'EN_ATTENTE'" class="badge bg-warning">EN_ATTENTE</span>
+            <span *ngSwitchCase="'REFUSE'" class="badge bg-danger">REFUSE</span>
+          </span>
+          </td>
+          <td>
+            <button *ngIf="sinistre.etatSinistre !== 'ACCEPTE'" (click)="acceptSinistre(sinistre.id)" class="btn btn-success btn-sm me-1">
+              <i class="bi bi-check-circle"></i> Accept
+            </button>
+            <button *ngIf="sinistre.etatSinistre !== 'REFUSE'" (click)="refuseSinistre(sinistre.id)" class="btn btn-danger btn-sm">
+              <i class="bi bi-x-circle"></i> Refuse
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="sinistres?.length === 0">No sinistre data available.</p>
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [(page)]="currentPage"
+          [pageSize]="pageSize"
+          (pageChange)="getAllSinistres()"
+        ></ngb-pagination>
+
+        <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getAllSinistres()">
+          <option [ngValue]="2">2 items per page</option>
+          <option [ngValue]="4">4 items per page</option>
+          <option [ngValue]="6">6 items per page</option>
+          <option [ngValue]="6">8 items per page</option>
+          <option [ngValue]="6">10 items per page</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @AllArgsConstructor
-@RequestMapping("/user/TransactionCrédit")
+@RequestMapping("/user/TransactionCredit")
 public class TransactionCController {
     private ITransactionCService service;
 

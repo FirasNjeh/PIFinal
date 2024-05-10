@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/user/PackCR")
@@ -49,6 +51,11 @@ public class PackCRController {
     public ResponseEntity<Object> uploadImageOnServer(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
         service.uploadImage(file,id);
         return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+    }
+    @GetMapping("/creditCounts")
+    public ResponseEntity<Map<String, Integer>> getPackAssurAssuranceCounts() {
+        Map<String, Integer> packAssurCounts = service.getPackCreditCounts();
+        return new ResponseEntity<>(packAssurCounts, HttpStatus.OK);
     }
 
 

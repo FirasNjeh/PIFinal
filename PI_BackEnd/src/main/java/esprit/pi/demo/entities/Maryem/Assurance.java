@@ -77,7 +77,6 @@ public class Assurance implements Serializable {
     @ToString.Exclude
     @OneToMany (mappedBy = "assurance")
     private Set<Sinistre> sinistres;
-    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     private PackAssur packAssur;

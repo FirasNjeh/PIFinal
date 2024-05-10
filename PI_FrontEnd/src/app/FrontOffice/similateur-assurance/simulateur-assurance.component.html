@@ -1,0 +1,93 @@
+<body>
+
+
+<div class="container">
+  <div class="brand-logo">
+
+  </div>
+  <div class="brand-title">Simulateur d'assurance</div>
+  <div class="inputs">
+    <select [(ngModel)]="typeAssur">
+      <option value="">Sélectionnez le type d'assurance</option>
+      <option value="SCOLAIRE">Scolaire</option>
+      <option value="ENTREPRENEUR">Entrepreneur</option>
+      <option value="SANTE">Santé</option>
+      <option value="AGRICOLE">Agricole</option>
+    </select>
+    <hr>
+    <div *ngIf="typeAssur === 'SCOLAIRE'">
+      <form [formGroup]="scolaireAssuranceForm" (ngSubmit)="onScolaireAssuranceSubmit()">
+        <input type="number" formControlName="capitalescolaire_assure" placeholder="Capital scolaire assuré" />
+        <hr>
+        <button type="submit">Simuler</button>
+      </form>
+      <hr>
+      <div *ngIf="scolairePrime">
+        <p>Prime: {{ scolairePrime }}</p>
+      </div>
+    </div>
+    <div *ngIf="typeAssur === 'ENTREPRENEUR'">
+      <form [formGroup]="entrepreneurAssuranceForm" (ngSubmit)="onEntrepreneurAssuranceSubmit()">
+        <select formControlName="typeAssuranceEntrep">
+          <option value="">Sélectionnez le type d'entreprise</option>
+          <option value="petite">Petite</option>
+          <option value="moyenne">Moyenne</option>
+          <option value="grande">Grande</option>
+        </select>
+        <hr>
+        <select formControlName="bienAssure">
+          <option value="">Sélectionnez le bien assuré</option>
+          <option value="bâtiments">Bâtiments</option>
+          <option value="équipements">Équipements</option>
+          <option value="stocks">Stocks</option>
+        </select>        <hr>
+        <button type="submit">Simuler</button>
+      </form>
+      <hr>
+      <div *ngIf="entrepreneurPrime">
+        <p>Prime: {{ entrepreneurPrime }}</p>
+      </div>
+    </div>
+    <div *ngIf="typeAssur === 'SANTE'">
+      <form [formGroup]="santeAssuranceForm" (ngSubmit)="onSanteAssuranceSubmit()">
+        <select formControlName="typeAssuranceSante">
+          <option value="">Sélectionnez le type d'adhérent</option>
+          <option value="adherant">Adhérent</option>
+          <option value="conjoint">Conjoint</option>
+        </select>
+        <hr>
+        <select formControlName="gender">
+          <option value="">Sélectionnez le genre</option>
+          <option value="masculin">masculin</option>
+          <option value="feminin">feminin</option>
+        </select>
+        <hr>
+        <input type="number" formControlName="age" placeholder="Âge" />
+        <hr>
+        <button type="submit">Simuler</button>
+      </form>
+      <hr>
+      <div *ngIf="santePrime">
+        <p>Prime: {{ santePrime }}</p>
+      </div>
+    </div>
+    <div *ngIf="typeAssur === 'AGRICOLE'">
+      <form [formGroup]="agricoleAssuranceForm" (ngSubmit)="onAgricoleAssuranceSubmit()">
+        <select formControlName="typeAgriculture">
+          <option value="">Sélectionnez le type d'agriculture</option>
+          <option value="cultures">Cultures</option>
+          <option value="élevage">Élevage</option>
+        </select>
+        <hr>
+        <input type="number" formControlName="capitalAgricole_assure" placeholder="Capital agricole assuré" />
+        <hr>
+        <button type="submit">Simuler</button>
+      </form>
+      <hr>
+      <div *ngIf="agriculturePrime">
+        <p>Prime: {{ agriculturePrime }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

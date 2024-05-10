@@ -30,6 +30,16 @@ import { ProfilBackComponent } from './BackOffice/profil-back/profil-back.compon
 import { ForgotPasswordComponent } from './PagesAuthentification/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './PagesAuthentification/set-password/set-password.component';
 import { ProfileFrontComponent } from './FrontOffice/profile-front/profile-front.component';
+import { DashboardAssurancesComponent } from './BackOffice/dashboard-assurances/dashboard-assurances.component';
+import { PackAssurListComponent } from './BackOffice/pack-assur-list/pack-assur-list.component';
+import { AssurancesListComponent } from './BackOffice/assurances-list/assurances-list.component';
+import { SinistresListComponent } from './BackOffice/sinistres-list/sinistres-list.component';
+import { PackAssurComponent } from './FrontOffice/pack-assur/pack-assur.component';
+import { AssurancesComponent } from './FrontOffice/assurances/assurances.component';
+import { SinistresComponent } from './FrontOffice/sinistres/sinistres.component';
+import { AddAssuranceComponent } from './FrontOffice/add-assurance/add-assurance.component';
+import { AddSinistreComponent } from './FrontOffice/add-sinistre/add-sinistre.component';
+import { SimulateurAssuranceComponent } from './FrontOffice/similateur-assurance/simulateur-assurance.component';
 
 const routes: Routes = [
 
@@ -42,50 +52,74 @@ const routes: Routes = [
         component:HomeFrontComponent
       },
       {
+        path: 'packs',
+        component: PackAssurComponent,canActivate:[AuthGuard],
+      },
+      {
+        path: 'assurances',
+        component: AssurancesComponent,canActivate:[AuthGuard],
+      },
+      {
+        path: 'sinistres/:idAssurance',
+        component: SinistresComponent,canActivate:[AuthGuard],
+      },
+      
+      {
+        path: 'addsinistre/:idAssur',
+        component: AddSinistreComponent,canActivate:[AuthGuard],
+      },
+      {
+        path: 'simulationassurance',
+        component: SimulateurAssuranceComponent,canActivate:[AuthGuard],
+      },
+      {
         path:"profilUser",
-        component:ProfileFrontComponent
+        component:ProfileFrontComponent,canActivate:[AuthGuard],
       },
       {
         path:"Simulateurs",
-        component:SimulateursComponent
+        component:SimulateursComponent,canActivate:[AuthGuard],
       },
       {
         path:"TableauAmortissement/:id",
-        component:TableAmortissementComponent
+        component:TableAmortissementComponent,canActivate:[AuthGuard],
       },
      
       {
         path:"PackCredit",
-        component:PackCRFrontComponent
+        component:PackCRFrontComponent,canActivate:[AuthGuard],
       },
       {
         path:"Pack/:id",
-        component:LePackFrontComponent
+        component:LePackFrontComponent,canActivate:[AuthGuard],
       },
       {
         path:"FormulaireCredit/:id",
-        component:FormulaireCreditFrontComponent
+        component:FormulaireCreditFrontComponent,canActivate:[AuthGuard],
       },
       {
         path:"SimulateurCredit",
-        component:SimulateurCreditComponent
+        component:SimulateurCreditComponent,canActivate:[AuthGuard],
       },
       {
         path:"Salaire",
-        component:SalaireComponent
+        component:SalaireComponent,canActivate:[AuthGuard],
       },
       {
         path:"Credits/:id",
-        component:CreditFrontComponent
+        component:CreditFrontComponent,canActivate:[AuthGuard],
       },
       {
         path:"Credit/:id",
-        component:LeCreditFrontComponent
+        component:LeCreditFrontComponent,canActivate:[AuthGuard],
       }
     ]
   }, {
     path:"MonthlyPayment/:id",
-    component:MonthlyPaymentFrontComponent
+    component:MonthlyPaymentFrontComponent,canActivate:[AuthGuard],
+  },{
+    path: 'addassurance/:idPack',
+    component: AddAssuranceComponent,canActivate:[AuthGuard],
   },
   
   {
@@ -128,13 +162,29 @@ const routes: Routes = [
       {
         path:"profil",
         component:ProfilBackComponent,
-      }
-    ]
-  },
+      },
+      {
+        path: 'dashboard',
+        component: DashboardAssurancesComponent,
+      },
+      {
+        path: 'packs',
+        component: PackAssurListComponent,
+      },
+      {
+        path: 'assurances',
+        component: AssurancesListComponent,
+      },
+      {
+        path: 'sinistres',
+        component: SinistresListComponent,
+      },
+    ],canActivate:[AuthGuard] //hedhi lezem na7cheha fi les liens kol,
+  }, 
 
       
       
-     //canActivate:[AuthGuard] //hedhi lezem na7cheha fi les liens kol
+    
   
   {
     path:"login",

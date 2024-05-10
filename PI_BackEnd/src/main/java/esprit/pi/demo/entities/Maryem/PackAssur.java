@@ -25,7 +25,6 @@ public class PackAssur implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private PackAssurance packAssurance;
-    @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy="packAssur")
     private Set<File> images;
